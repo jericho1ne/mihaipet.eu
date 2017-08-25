@@ -1,11 +1,24 @@
 {
   "name": "mihaipet.eu",
   "version": "1.0.0",
-  "description": "Personal websit",
+  "description": "Personal website",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jericho1ne/mihaipet.eu"
+  },
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-headerfooter": "^1.0.3",
+    "gulp-sass": "^3.1.0",
+    "gulp-template": "^4.0.0",
+    "gulp-util": "^3.0.8"
+  }
 }
