@@ -1,0 +1,17 @@
+[
+	{
+		"file": "index",
+		"title": "Mihai Peteu - Front End Software Developer based in Los Angeles",
+		"description": "I build web &amp; mobile apps, visualize data, and tell stories using photos and plotted points.  Always focused on simplicity and usability. "
+	},
+    {
+		"file": "tutorials",
+		"title": "How to guides, talks, and slide decks.",
+		"description": ""
+	},
+    {
+		"file": "film-and-photo",
+		"title": "Photography and Film",
+		"description": "Urban nighttime landscapes, outdoor daytime landscapes, and various short films."
+	}
+]
