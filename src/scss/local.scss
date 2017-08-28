@@ -12,14 +12,14 @@ a {
 
 /* Custom default button */
 .btn-secondary {
-	$how-wide: 6rem;
+	$how-wide: 3.5rem;
 	border-color: #bababa;
 	border-radius: $how-wide;
 	width: $how-wide;
 	height: $how-wide;
-	padding: ($how-wide/5) 0;
-	margin: $how-wide/10;
-	background-color: rgba(255,255,255,.92);
+	padding: ($how-wide/6) 0;
+	margin: $how-wide/12;
+	background-color: rgba(255,255,255,.95);
 
 	&:hover,
 	&:focus {
@@ -45,13 +45,22 @@ body {
 	text-align: center;
 }
 
+.bg-cover {
+	background: no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
 p, .cover-heading {
 	text-shadow: 0.05rem 0.05rem 0.15rem rgba(0, 0, 0, 0.75)
 }
 
 #menu-bar {
+	width: 100%;
 	background-color: rgba(0,0,0,.8);
-	padding: 1.5rem 3rem;
+	padding: 1rem 2rem;
 }
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
@@ -67,6 +76,7 @@ p, .cover-heading {
 	vertical-align: top;
 }
 .cover-container {
+	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -111,13 +121,16 @@ p, .cover-heading {
 
 // Cover
 .cover {
-	padding: 2rem 8rem;
-	background-color: rgba(30,130,230,.65);
+	margin-top: 25%;
+	padding: 2rem 4rem;
+	background-color: rgba(30,130,250,.35);
 	box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
-
 }
 
-
+// TODO: next in @media cases
+.lead {
+	font-size: .95rem;
+}
 // Footer
 .mastfoot {
 	// border: 1px solid pink;
@@ -157,12 +170,12 @@ p, .cover-heading {
 	}
 	/* Start the vertical centering */
 	.site-wrapper-inner {
-		vertical-align: middle;
 	}
 	/* Handle the widths */
 	.masthead,
 	.mastfoot,
 	.cover-container {
-		width: 100%; /* Must be percentage or pixels for horizontal alignment */
+		/* Must be percentage or pixels for horizontal alignment */
+		//
 	}
 }
