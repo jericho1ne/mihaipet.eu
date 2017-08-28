@@ -7,7 +7,7 @@ var
     sass = require('gulp-sass'),
     uglify = require('gulp-uglify'),
     rename = require("gulp-rename"),
-    ghPages = require('gulp-gh-pages'),
+    // ghPages = require('gulp-gh-pages'),
     // importJson = require('gulp-sass-import-json'),
     gutil = require('gulp-util'),
     browserSync = require('browser-sync').create();
@@ -20,9 +20,9 @@ var basePaths = {
 var paths = {
     lib: basePaths.dest + 'lib/',
     partials: basePaths.src + 'partials/',
-    img: {
-        src: basePaths.src + 'img/',
-        dest: basePaths.dest + 'img/'
+    media: {
+        src: basePaths.src + 'media/',
+        dest: basePaths.dest + 'media/'
     },
     scripts: {
         src: basePaths.src + 'js/',
@@ -102,7 +102,7 @@ gulp.task('copy', function() {
     gutil.log(`>> Started ` + gutil.colors.green(`copy`) + ` task`);
 
     // Copy image files
-    gulp.src([paths.img.src + '*']).pipe(gulp.dest(paths.img.dest))
+    gulp.src([`${paths.media.src}**/*`]).pipe(gulp.dest(paths.media.dest))
     // Copy PHP library files
     gulp.src([paths.php.src + '*']).pipe(gulp.dest(paths.php.dest))
     // Copy robots.txt

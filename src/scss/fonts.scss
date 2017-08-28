@@ -1,0 +1,70 @@
+//
+// Fonts
+//
+
+// Header fonts (serif)
+$font-family-header: 'Roboto Slab', Times, serif;
+// Body fonts (sans serif)
+$font-family-body: 'Montserrat', Helvetica, sans-serif;
+
+// $h1FontSize: 1.78em;
+// $h2FontSize: 1.4em;
+// $h3FontSize: 1em;
+// $h4FontSize: .82em;
+// $h5FontSize: .68em;
+// $h6FontSize: .5em;
+
+// Preset sizes
+$font-size-xs:  12px;
+$font-size-sm:  14px;
+$font-size-base:16px;
+$font-size-lg:  18px;
+$font-size-xl:  22px;
+$font-size-xxl: 32px;
+
+$h1FontSize: 36px;
+$h2FontSize: 30px;
+$h3FontSize: 26px;
+$h4FontSize: 23px;
+$h5FontSize: 17px;
+$h6FontSize: 14px;
+
+// Weights
+$font-weight-light: 200;
+$font-weight-normal: 400;
+$font-weight-heavy: 600;
+
+h1 { font-size: $h1FontSize; }
+h2 { font-size: $h2FontSize; }
+h3 { font-size: $h3FontSize; }
+h4 { font-size: $h4FontSize; }
+h5 { font-size: $h5FontSize; }
+h6 { font-size: $h6FontSize; }
+
+h1, h2, h3, h4, h5, h6 {
+    @extend %heading-font-normal;
+}
+
+// Body fonts
+%body-font-light {
+    font-family: $font-family-body;
+    font-weight: $font-weight-light;
+}
+%body-font-normal {
+    font-family: $font-family-body;
+    font-weight: $font-weight-normal;
+}
+%body-font-heavy {
+    font-family: $font-family-body;
+    font-weight: $font-weight-heavy;
+}
+
+// Heading fonts
+%heading-font-bold {
+    font-family: $font-family-header;
+    font-weight: 400;
+}
+%heading-font-normal {
+    font-family: $font-family-header;
+    font-weight: 300;
+}

@@ -1,0 +1,27 @@
+//
+// Variables
+//
+
+// Theme colors
+//
+// old
+// http://paletton.com/#uid=43j0I0kwNvZjLDjp8yAyToSDMjy
+// new
+// http://paletton.com/#uid=43o0u0kwNvZjLDjp8yAyToSDMjy
+$theme-primary:    #04617B;  // blueish
+$theme-secondary:  #FFC337;  // yellowish
+$theme-tertiary:   #FF2300;  // reddish
+
+$theme-accent:     #FF8100;  // orange-ish
+
+
+$gray-base:        #000;
+$gray-darker:      lighten($gray-base, 10%);
+$gray-dark:        lighten($gray-base, 20%);
+$gray:             lighten($gray-base, 50%);
+$gray-light:       lighten($gray-base, 70%);
+$gray-lighter:     lighten($gray-base, 85%);
+$gray-lightest:    lighten($gray-base, 98%);
+
+$secondary-lighter: lighten($theme-secondary, 34%);
+$tertiary-lighter: lighten($theme-tertiary, 34%);

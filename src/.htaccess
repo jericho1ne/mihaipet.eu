@@ -1,0 +1,19 @@
+RewriteEngine on
+RewriteBase /
+
+# remove trailing slash if not a directory
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# forward request to html file, **but don't redirect (bot friendly)**
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Also check that file exists on the server to avoid rewrite loop (500 error)
+RewriteCond %{REQUEST_FILENAME}.html -f
+
+# Remove both file extension and trailing slash; 301 redirect for SEO
+RewriteRule ^(.+[^/])$ $1.html [R=301,L,NC]
+# (Add R=301 for prod, remove for dev/testing)
+
+# Redirect all 404s to home page
+FallbackResource /index.html
+# ErrorDocument 404 /index.html
