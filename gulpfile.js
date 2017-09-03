@@ -24,6 +24,10 @@ var paths = {
         src: basePaths.src + 'media/',
         dest: basePaths.dest + 'media/'
     },
+    project: {
+        src: basePaths.src + 'project/',
+        dest: basePaths.dest + 'project/'
+    },
     scripts: {
         src: basePaths.src + 'js/',
         dest: basePaths.dest + 'js/'
@@ -101,8 +105,10 @@ gulp.task('minify-css', ['sass'], function() {
 gulp.task('copy', function() {
     gutil.log(`>> Started ` + gutil.colors.green(`copy`) + ` task`);
 
-    // Copy image files
+    // Copy media files
     gulp.src([`${paths.media.src}**/*`]).pipe(gulp.dest(paths.media.dest))
+    // Copy project files
+    gulp.src([`${paths.project.src}**/*`]).pipe(gulp.dest(paths.project.dest))
     // Copy PHP library files
     gulp.src([paths.php.src + '*']).pipe(gulp.dest(paths.php.dest))
     // Copy robots.txt

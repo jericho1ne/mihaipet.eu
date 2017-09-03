@@ -1,0 +1,104 @@
+.timeline h3 { font-size: 20px; font-weight: 300; margin: 4px; }
+.timeline p { font-size: 14px; font-weight: 300; margin: 4px; }
+.timeline a { font-size: 14px; font-weight: 300; }
+
+.timeline, .timeline.v1 {
+  margin: 0px auto; max-width: 100%; overflow: visible; height: auto;
+  position: relative;  padding: 0px; list-style-type: none;
+  background-image: url("bg-link.png"); background-repeat: repeat-y; background-position: 49.5% 0%;
+}
+
+.timeline *, .timeline *:after, .timeline:after, .timeline *:before, .timeline:before, .timeline.v1 *, .timeline.v1 *:after, .timeline.v1:after, .timeline.v1 *:before, .timeline.v1:before {
+	font-family: "Roboto";
+  -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+/* YEAR */
+.timeline .year, .timeline.v1 .year {
+	position: relative; background: none; font-size: 56px; max-width: 28px;
+	padding-top: 20px;  padding-bottom: 4px; color: #fff;  font-weight: 800;
+   /* 								T 	R	 B  L		*/
+  clear: both; margin: 26 0 6 -10px; letter-spacing: 10px;
+	text-shadow: 2px 2px 5px #777;
+  text-align: left;
+}
+
+.timeline .year:first-of-type, .timeline.v1 .year:first-of-type {
+  margin-top: -.45em !important;
+}
+
+/* IMAGE TAGS INSIDE EVENT -- line 101, ../scss/timeline.scss */
+.timeline .event img, .timeline.v1 .event img {
+	padding: 0px;  margin-left: -6px; width: 103%; border-radius: 4px; border: 1px solid #888;
+}
+
+/* EVENT THING */
+.timeline .event, .timeline.v1 .event {
+  position: relative; border: 0px solid #eee; opacity: .96;
+
+  text-align: left; float: right;  clear: right;
+  width: 45%; margin: 10px -2px 2px 2px; border-radius: 3px;
+
+  list-style-type: none; display: block; padding: 0.10em;  background-color: #fefefe;  z-index: 15;
+  text-decoration: none; -webkit-transition: background .15s linear;
+  -moz-transition: background .15s linear;
+  -ms-transition: background .15s linear;
+  -o-transition: background .15s linear;
+  transition: background .15s linear;
+}
+
+/* HOVER ON EVENT -- line 106, ../scss/timeline.scss */
+.timeline .event:hover, .timeline.v1 .event:hover {
+  background: #fff; opacity: 1;
+}
+
+/* HOVER ON BUBBLE -- line 109, ../scss/timeline.scss */
+.timeline .event:hover:after, .timeline.v1 .event:hover:after {
+  background: #fff;
+}
+/* ======================================================================= */
+
+/* LEFT SIDE EVENTS */
+.timeline .event:nth-of-type(2n), .timeline.v1 .event:nth-of-type(2n) {
+  float: left;  clear: left;  left: 0;
+}
+/*  LEFT SIDE BUBBLES */
+.timeline .event:nth-of-type(2n):after, .timeline.v1 .event:nth-of-type(2n):after {
+  right: -5%;
+  /* reset the standard declaration I defined before*/
+  left: auto;
+}
+
+/* BUBBLES!  */
+@media all and (min-width: 650px) {
+  .timeline .event:after, .timeline.v1 .event:after {
+    display: block;
+    content: ' ';
+    height: 14px;
+    width: 14px;
+    background: #fff;			/* REGULAR BUBBLE COLOR */
+    border-radius: 50%;
+    position: absolute;  left: -6%; top: 2.7em;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px #777;
+  }
+}
+
+/* FIRST EVENT OF THE YEAR - if previous year has an Even # of entries */
+.timeline .event.offset-first, .timeline.v1 .event.offset-first {
+	right: -1.15em; z-index: 10;
+	/*      T 	R  B    L  */
+  margin: 1.5 0 1.75 -0.50em;
+}
+
+/* FIRST EVENT OF THE YEAR - if previous year has an Odd # of entries */
+.timeline .year + .event, .timeline.v1 .year + .event {
+  top: -1.5em;
+  z-index: 11;
+}
+
+@media all and (max-width: 600px) {
+  /* line 60, ../scss/timeline.scss */
+  .timeline .event, .timeline.v1 .event {
+    width: 100%;
+  }
+}

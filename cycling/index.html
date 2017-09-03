@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cycling History</title>
+  	<!-- External -->
+  	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
+
+  	<!-- Local styles and scripts -->
+  	<link rel="stylesheet" href="css/style.css">
+  	<link rel="stylesheet" href="css/timeline.css">
+	<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+  	<script src="js/timeline.js" type="text/javascript"></script>
+</head>
+<body>
+	<ul class='timeline' id='cycling-timeline'>
+
+    <!-- NEW YEAR -->
+    <li class="year">20xx</li>
+    <li class='event offset-first'>
+      <h3>Placeholder Event</h3>Something amazing happened today, but it's a secret
+    </li>
+ 	</ul>
+
+	<script type="text/javascript">
+		$(	document).ready(function() {
+			console.log('run tings.');
+			$.ajax({
+			  url: 'data.json',
+			  async: false,
+			  dataType: 'json',
+			  success: function (response) {
+			  	console.log("createTimeline Called");
+			    createTimeline(response);
+			  }
+			});
+
+		});
+	</script>
+
+</ul>
+</body>
+</html>

@@ -4,6 +4,11 @@
 		"title": "Mihai Peteu - Front End Software Developer based in Los Angeles",
 		"description": "I build web &amp; mobile apps, visualize data, and tell stories using photos and plotted points.  Always focused on simplicity and usability. "
 	},
+	{
+		"file": "projects",
+		"title": "Web &amp; Mobile Apps + Data Visualization",
+		"description": "Web Apps, Mobile Apps, and Data Visualization projects."
+	},
     {
 		"file": "tutorials",
 		"title": "How to guides, talks, and slide decks.",

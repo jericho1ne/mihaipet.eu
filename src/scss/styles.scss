@@ -7,86 +7,61 @@
 @import 'responsive.scss';
 @import 'local.scss';
 
-
 // Global Components
-html,
-body {
-    width: 100%;
-    background-color: $gray-darker;
-    @extend %body-font-light;
-    webkit-tap-highlight-color: $gray-darker;
-    a {
-        @extend %transition-all;
-        color: lighten($theme-secondary, 10);
-        text-decoration: none;
-        cursor: pointer;
-        &:hover,
-        &:focus {
-            color: darken($theme-secondary, 10%);
-            text-decoration: none;
-        }
-    }
-    button {
-        @extend %transition-all;
-    }
-    hr {
-        width: 100%;
-        border-width: 1px;
-        border-color: $gray-lightest;
-        opacity: 0.35;
-    }
-    hr.spacer {
-        border-color: none;
-        opacity: 0;
-    }
-    ul, ol {
-        margin-left: -20px;
-    }
-}
-.w100p { width: 100%; }
-.w80p { width: 80%; }
-.mt10 { margin-top: 10px; }
-.mt14 { margin-top: 14px; }
-.mt-minus2 { margin-top: -2px; }
-.icon {
-    max-width: 40px;
-    height: 22px;
-    padding: 2.5px;
-}
+// html,
+// body {
+//     webkit-tap-highlight-color: $gray-darker;
+//     a {
+//         @extend %transition-all;
+//         color: lighten($theme-secondary, 10);
+//         text-decoration: none;
+//         cursor: pointer;
+//         &:hover,
+//         &:focus {
+//             color: darken($theme-secondary, 10%);
+//             text-decoration: none;
+//         }
+//     }
+//     button {
+//         @extend %transition-all;
+//     }
+//     hr {
+//         width: 100%;
+//         border-width: 1px;
+//         border-color: $gray-lightest;
+//         opacity: 0.35;
+//     }
+//     hr.spacer {
+//         border-color: none;
+//         opacity: 0;
+//     }
+//     ul, ol {
+//         margin-left: -20px;
+//     }
 
-.fb-share-button {
-    // background-color: darken($theme-primary, 12);
-    @extend %border-radius;
-    @extend %border-light;
-    text-align: center;
-    float: right;
-    font-size: $font-size-lg !important;
-    padding: 12px;
-    right: 10%;
-    width: 120px;
-}
-.success, .error {
-    padding: 20px 20px;
-    @extend %border-radius;
-    border: 1px solid darken($gray-lighter, 20);
-    opacity: .92;
-}
-.success {
-    background-color: lighten($gray-dark, 10);
-}
-.error {
-    background-color: darken($theme-tertiary, 10);
-    box-shadow: 1px 1px 2px 2px lighten($gray-darker, 20);
-}
-h4.lh-2 {
-    line-height: 2.8 !important;
-}
-.white-text {
-    color: #fff;
-}
-.pad30 { padding: 30px; }
-.pad40 { padding: 40px; }
-.mb20 { margin-bottom: 20px; }
+// }
+// .w100p { width: 100%; }
+// .w80p { width: 80%; }
+
+// .icon {
+//     max-width: 40px;
+//     height: 22px;
+//     padding: 2.5px;
+// }
+
+// .success, .error {
+//     padding: 20px 20px;
+//     @extend %border-radius;
+//     border: 1px solid darken($gray-lighter, 20);
+//     opacity: .92;
+// }
+// .success {
+//     background-color: lighten($gray-dark, 10);
+// }
+// .error {
+//     background-color: darken($theme-tertiary, 10);
+//     box-shadow: 1px 1px 2px 2px lighten($gray-darker, 20);
+// }
 // General
 .border-bottom {
     border-bottom: 1px solid $gray-lighter;
@@ -115,104 +90,45 @@ h4.lh-2 {
 }
 
 // Photo banners
-.banner-content {
-    display: flex;
-    position: relative;
-    // Hero text on top of photo banner (if any)
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .hero-text {
-        @extend %heading-font-normal;
-        color: #fff;
-        text-shadow: 1px 1px 1px lighten($gray-darker, 10);
-    }
-    .hero-text {
-        opacity: .85;
-    }
-    .banner-title {
-        position: absolute;
-        margin: 0;
-        bottom: 0px;
-        left: 0px;
-        min-width: 100%;
-        background-color: rgba(0,0,0,.35);
-    }
-}
-.banner-grand-park {
-    @extend .banner-content;
-    justify-content: center;  // horizontal align
-    align-items: center;    // vertical align
-    @include banner-image('/img/downtown-los-angeles.jpg');
-}
-.banner-howard {
-    @extend .banner-content;
-    @include banner-image('/img/attorney-howard-hom.jpg');
-}
-.banner-gail {
-    @extend .banner-content;
-    @include banner-image('/img/attorney-gail-dulay.jpg');
-}
+// .banner-content {
+//     display: flex;
+//     position: relative;
+//     // Hero text on top of photo banner (if any)
+//     h1,
+//     h2,
+//     h3,
+//     h4,
+//     h5,
+//     h6,
+//     .hero-text {
+//         @extend %heading-font-normal;
+//         color: #fff;
+//         text-shadow: 1px 1px 1px lighten($gray-darker, 10);
+//     }
+//     .hero-text {
+//         opacity: .85;
+//     }
+//     .banner-title {
+//         position: absolute;
+//         margin: 0;
+//         bottom: 0px;
+//         left: 0px;
+//         min-width: 100%;
+//         background-color: rgba(0,0,0,.35);
+//     }
+// }
+// .banner-sample {
+//     @extend .banner-content;
+//     justify-content: center;  // horizontal align
+//     align-items: center;    // vertical align
+//     @include banner-image('/img/sample.jpg');
+// }
 
-// Sections
-section {
-    padding: 10px 0;
-    position: relative;
-    // border-bottom: 1px solid $gray-lightest;
-    background-position: center;
-    li {
-        line-height: 1.5;
-        margin-bottom: 10px;
-    }
-    .section-heading {
-        h2 {
-            margin-top: 0;
-        }
-        margin-bottom: 100px;
-    }
-    .overlay {
-        height: 100%;
-        width: 100%;
-        background-color: fade(black, 50%);
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-}
-
-.map-embed {
-    @extend %border-radius;
-    overflow: hidden;
-    width: 100%;
-    margin: 6px auto;
-    @extend %border-light;
-    height: 354px;
-}
-#contactForm {
-    @extend %transition-all;
-}
-ul.list-social {
-    // margin: 20px auto;
-    margin: 40px 0px;
-    max-width: 50%;
-    padding: 20px;
-    border: 1px solid $gray-lightest;
-    color: black;
-    margin-bottom: 0;
-    li {
-        width: 30%;
-        // border: 1px solid;
-        text-align: center;
-        margin: auto 0;
-        a {
-            display: block;
-            height: 80px;
-            width: 80px;
-            line-height: 80px;
-            font-size: 40px;
-        }
-    }
-}
+// .map-embed {
+//     @extend %border-radius;
+//     overflow: hidden;
+//     width: 100%;
+//     margin: 6px auto;
+//     @extend %border-light;
+//     height: 354px;
+// }

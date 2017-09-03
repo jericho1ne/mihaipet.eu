@@ -1,4 +1,16 @@
-		</div>
-	</div>
+<script>
+	var currentUrl = window.location.pathname.split('/').pop().split('.')[0];
+	currentUrl = currentUrl.trim() === ''
+		? 'index'
+		: currentUrl;
+	$(".nav").find(".active").removeClass("active");
+	$(".nav a").each(function() {
+		var section = $(this).data('section');
+		if (section === currentUrl) {
+			$(this).addClass("active");
+			return;
+		}
+	});
+</script>
 </body>
 </html>

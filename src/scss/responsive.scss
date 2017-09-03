@@ -4,54 +4,26 @@ $padBase: 60px;
 $padIncr: 20px;
 $fontSizeIncr: 1.2px;
 
-/* ----------- 0px - 320px ----------- */
-@media screen and (max-width: 320px) {
-    @include build-responsive-page(0.72);
+/* Small. Above 34em (544px) */
+@media screen and (min-width: 1em) {
+	@include build-responsive-page(0.8);
 }
-/* ----------- 321px - 546px ----------- */
-@media screen and (min-width: 321px) and (max-width: 546px) {
-    @include build-responsive-page(0.81);
-    .banner-content {
-        padding: $padBase 0;
-    }
+@media screen and (min-width: 34em) {
+	@include build-responsive-page(0.85);
 }
-/* ----------- 547px - 767px ----------- */
-@media screen and (min-width: 547px)  and (max-width: 767px) {
-    @include build-responsive-page(0.85);
-    .banner-content {
-        min-height: 300px;
-        .hero-text { line-height: 190%; }
-    }
+
+/* Medium. Above 48em (768px) */
+@media screen and (min-width: 48em) {
+	@include build-responsive-page(0.9);
 }
-/* ----------- 768px - 950px ----------- */
-@media screen and (min-width: 768px) and (max-width: 950px) {
-    @include build-responsive-page(0.92);
-    .banner-content {
-        min-height: 400px;
-        .hero-text { line-height: 200%; }
-    }
+
+/* Large. Above 62em (992px) */
+@media screen and (min-width: 62em) {
+	@include build-responsive-page(0.93);
 }
-/* ----------- 950px - 1200px ----------- */
-@media screen and (min-width: 951px) and (max-width: 1200px) {
-    @include build-responsive-page(0.97);
-    .banner-content {
-        min-height: 500px;
-        .hero-text { line-height: 220%; }
-    }
+
+/* Extra large. Above 75em (1200px) */
+@media screen and (min-width: 75em) {
+	@include build-responsive-page(1);
 }
-/* ----------- 1201px - 1600px ----------- */
-@media screen and (min-width: 1201px) and (max-width: 1600px) {
-    @include build-responsive-page(1.05);
-    .banner-content {
-        min-height: 600px;
-        .hero-text { line-height: 240%; }
-    }
-}
-/* ----------- 1601px + ----------- */
-@media screen and (min-width: 1601px) and (max-width: 10000px) {
-    @include build-responsive-page(1.15);
-    .banner-content {
-        min-height: 620px;
-        .hero-text { line-height: 320%; }
-    }
-}
+

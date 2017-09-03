@@ -22,6 +22,14 @@
 }
 
 @mixin build-responsive-page($m) {
+	.card {
+		// border: 1px solid red;
+		margin: $m*1rem auto;
+		margin-bottom: $m*1rem;
+	}
+	.btn {
+		font-size: $m*1rem;
+	}
     .navbar-default {
         padding: $m*4px $m*20px;
     }
@@ -61,14 +69,7 @@
     h4 { font-size: $h4FontSize * $m; }
     h5 { font-size: $h5FontSize * $m; }
     h6 { font-size: $h6FontSize * $m; }
-    .banner-content {
-        font-size: $h1FontSize;
-        min-height: 240px;
-        line-height: 150% * $m;
-    }
-    .banner-title {
-        padding: $m*8px $m*30px !important;
-    }
+
     // Add space between columns
     *[class^='col-sm'] {
         padding: 0 $m*30px;
