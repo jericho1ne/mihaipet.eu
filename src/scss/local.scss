@@ -37,12 +37,18 @@ html,
 body {
 	height: 100%;
 	@extend %body-font-light;
-
+	background-color: darken($theme-secondary, 12);
 	p:not(.lead) {
 		text-shadow: none;
 	}
 }
 
+.jumbotron {
+	background-color: lighten($theme-primary, 4);
+	border-radius: 0;
+	color: #fff;
+	@extend %body-font-light;
+}
 .bg-cover {
 	background: no-repeat center center fixed;
 	-webkit-background-size: cover;
@@ -124,6 +130,7 @@ p, .cover-heading {
 
 .card {
 	width: 20rem;
+	border-color: darken($theme-secondary, 24);
 }
 
 .lead {
