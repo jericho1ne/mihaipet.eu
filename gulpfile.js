@@ -77,7 +77,7 @@ gulp.task('inject-tags', ['headerfooter'], function () {
 });
 
 // Create project pages on the fly
-gulp.task('project-template', function () {
+gulp.task('project-templates', function () {
     var projects = JSON.parse(fs.readFileSync(`${paths.partials}projects.json`));
     var sourceTemplate = fs.readFileSync(`${paths.partials}project-template.html`);
     var templateFile = `${paths.partials}project-template.html`;
@@ -163,7 +163,7 @@ gulp.task('copy', function() {
 //
 
 // Static Server + watch scss/html files
-gulp.task('serve', ['headerfooter', 'sass', 'minify-css', 'minify-js', 'copy', 'inject-tags'], function() {
+gulp.task('serve', ['headerfooter', 'project-templates', 'sass', 'minify-css', 'minify-js', 'copy', 'inject-tags'], function() {
     // Initialize a local server in the styleguide root directory
     browserSync.init({
         server: basePaths.dest
@@ -174,7 +174,7 @@ gulp.task('serve', ['headerfooter', 'sass', 'minify-css', 'minify-js', 'copy', '
             paths.partials + '*.html',
             basePaths.src + '*.html',
             paths.partials + '*.json',
-        ], ['headerfooter', 'inject-tags']);
+        ], ['headerfooter', 'inject-tags', 'project-templates']);
 
     // Enable file watchers which will trigger a browser reload
     gulp.watch(paths.styles.src + "*.scss", ['sass']);
