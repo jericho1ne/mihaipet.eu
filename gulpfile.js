@@ -76,6 +76,37 @@ gulp.task('inject-tags', ['headerfooter'], function () {
     } // End for loop through meta tags
 });
 
+// Create project pages on the fly
+gulp.task('project-template', function () {
+    var projects = JSON.parse(fs.readFileSync(`${paths.partials}projects.json`));
+    var sourceTemplate = fs.readFileSync(`${paths.partials}project-template.html`);
+    var templateFile = `${paths.partials}project-template.html`;
+
+    var projectFilename = '';
+
+    // Inject page titles and meta description tags
+    for (var key in projects) {
+        gutil.log(`\t Processing ` + gutil.colors.green(`[${projects[key]['slug']}]` ));
+        projectFilename = `${projects[key]['slug']}.html`;
+
+        // Duplicate and rename template file for each project
+		gulp.src(templateFile)
+			.pipe(rename(projectFilename))
+			.pipe(gulp.dest(paths.project.dest));
+
+		// Inject project details into each project page
+        gulp.src(`${paths.project.dest}${projectFilename}`)
+            .pipe(template({
+                slug: projects[key]['slug'],
+                title: projects[key]['title'],
+                subtitle: projects[key]['subtitle'],
+                detail: projects[key]['detail'],
+                media: '',
+            }))
+            .pipe(gulp.dest(paths.project.dest));
+    } // End for loop through projects.json
+});
+
 // Compile SASS into CSS, auto-injecting changed files into browser
 gulp.task('sass', function() {
     return gulp.src(paths.styles.src + 'styles.scss')

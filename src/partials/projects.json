@@ -6,10 +6,12 @@
 		"detail": "Collaborative project with <a href=\"https://uscpublicdiplomacy.org/users/rook_campbell\">Rook Campbell</a>, intended to showcase the global extent of FIFA's corruption.  Given the sheer number of detailed allegations made, this visualization made use of icons to represent each Actor (aka \"Players\"), colors for each Connection type, and varying line types for Actual vs Planned payoffs.",
 		"type": "data visualization",
 		"button": "Live Demo",
-		"thumb": "project/fifa-gate.jpg",
-		"link": "project/fifa-gate/",
-		"images": [],
-		"video": []
+		"media": {
+			"thumb": "project/fifa-gate.jpg",
+			"link": "project/fifa-gate/",
+			"images": [],
+			"video": []
+		}
 	},
 	{
 		"slug": "middle-of-june",
@@ -17,10 +19,12 @@
 		"subtitle": "A live music aggregator with which searches for detailed artist info and video clips on the fly.",
 		"detail": "",
 		"button": "Live Demo",
-		"thumb": "",
-		"link": "https://middleofjune.com",
-		"images": [],
-		"video": []
+		"media": {
+			"thumb": "",
+			"link": "https://middleofjune.com",
+			"images": [],
+			"video": []
+		}
 	},
     {
 		"slug": "renova-bikes",
@@ -28,10 +32,12 @@
 		"subtitle": "Responsive small business website with a dynamically-driven bicycle inventory.",
 		"detail": "Users are able to search the inventory for the right-sized bike. Inventory is updated via a Google Spreadsheet.",
 		"button": "Live Demo",
-		"thumb": "project/renova-bikes.jpg",
-		"link": "http://renovabikes.com/app",
-		"images": [],
-		"video": []
+		"media": {
+			"thumb": "project/renova-bikes.jpg",
+			"link": "http://renovabikes.com/app",
+			"images": [],
+			"video": []
+		}
 	},
     {
 		"slug": "find-some-coffee",
@@ -39,10 +45,12 @@
 		"subtitle": "Geolocative web app for finding nearby coffee shops with strong coffee and equally strong wifi.",
 		"detail": "",
 		"button": "Live Demo",
-		"thumb": "project/find-some-coffee.jpg",
-		"link": "https://findsomecoffee.com/",
-		"images": [],
-		"video": []
+		"media": {
+			"thumb": "project/find-some-coffee.jpg",
+			"link": "https://findsomecoffee.com/",
+			"images": [],
+			"video": []
+		}
 	},
 	 {
 		"slug": "waterbowl-mobile-app",
@@ -50,10 +58,12 @@
 		"subtitle": "A social network for dog lovers (iOS mobile app).",
 		"detail": "",
 		"button": "Live Demo",
-		"thumb": "project/waterbowl.jpg",
-		"link": "project/waterbowl",
-		"images": [],
-		"video": []
+		"media": {
+			"thumb": "project/waterbowl.jpg",
+			"link": "project/waterbowl",
+			"images": [],
+			"video": []
+		}
 	},
 	 {
 		"slug": "law-offices",
@@ -61,10 +71,12 @@
 		"subtitle": "Responsive framework website with a heavy SEO focus, relying heavily on custom-built HTML templates.",
 		"detail": "",
 		"button": "Live Demo",
-		"thumb": "project/law-offices.jpg",
-		"link": "http://attorneydulay.com/",
-		"images": [],
-		"video": []
+		"media": {
+			"thumb": "project/law-offices.jpg",
+			"link": "http://attorneydulay.com/",
+			"images": [],
+			"video": []
+		}
 	},
 	{
 		"slug": "mapbox-live-shows",
@@ -72,9 +84,11 @@
 		"subtitle": "Los Angeles live music venue density map.",
 		"detail": "Created sing Mapbox's online tools.",
 		"button": "Live Demo",
-		"thumb": "project/live-shows.jpg",
-		"link": "project/live-shows/",
-		"images": [],
-		"video": []
+		"media": {
+			"thumb": "project/live-shows.jpg",
+			"link": "project/live-shows/",
+			"images": [],
+			"video": []
+		}
 	}
 ]
