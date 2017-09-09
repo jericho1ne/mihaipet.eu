@@ -22,8 +22,8 @@ body {
 	@extend .light-text;
 	margin-top: 20%;
 	padding: 2rem 4rem;
-	background-color: rgba(80,130,180,.75);
-	box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
+	background-color: rgba(4,97,123,.9);
+	box-shadow: inset 0 0 5rem rgba(10,50,100,1);
 }
 .jumbotron {
 	background-color: lighten($theme-primary, 4);

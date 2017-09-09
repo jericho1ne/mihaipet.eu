@@ -1,20 +1,11 @@
-<div class="card">
-	<img class="card-img-top" src="<%= thumb %>" alt="Middle of June">
+<div id="<%= slug %>" class="card">
+	<img class="card-img-top"
+		src="<%= thumb %>" alt="<%= title %>">
 	<div class="card-block">
 		<h4 class="card-title"><%= title %></h4>
 		<p class="card-text"><%= subtitle %></p>
-		<a href="<%= link %>" class="btn btn-primary">Live demo</a>
-	</div>
-</div>
-<div
-	id="<%= slug %>"
-	class="project-container dark-text"
->
-	<div>
-		<h1><%= title %></h1>
-		<p><%= subtitle %>&nbsp;<%= detail%></p>
-	</div>
-	<div>
-		<%= media %>
+		<a href="<%= link %>" class="btn btn-primary">
+			<%= button %>
+		</a>
 	</div>
 </div>
