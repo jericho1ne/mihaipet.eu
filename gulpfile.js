@@ -44,8 +44,6 @@ var paths = {
 	}
 };
 
-var cardsHtmlSource = '';
-
 
 // cleanPath method with a specific path (returns a promise)
 function cleanPath(path) {
@@ -84,6 +82,23 @@ var createProjectCards = function() {
     return Q.all(promises);
 };
 
+var getCardsHtml = function() {
+	var projects = JSON.parse(fs.readFileSync(`${paths.partials}/projects.json`));
+	var cardsHtmlSource = '';
+
+	for (var i in projects) {
+        var proj = projects[i];
+		//destinationProject = `${projectDest}/${projectFilename}`;
+
+		destinationCard = `${paths.project.dest}/card-${projectFilename}`;
+		gutil.log(`\t reading ` + gutil.colors.green(`[${destinationCard}]` ));
+
+        // Append project card HTML source, forcing a synchronous read
+		cardsHtmlSource += fs.readFileSync(destinationCard, { encoding: 'utf-8' });
+                //  gutil.log(cardsHtmlSource);
+	}
+	return cardsHtmlSource;
+};
 /*
 	var templateProject = `${paths.partials}/project-template.html`;
 	var projectDest = `${paths.project.dest}`;
@@ -172,6 +187,8 @@ gulp.task('cards', function() {
 				// gutil.log(`\t destinationCard ` + gutil.colors.green(`[${destinationCard}]` ));
                 //  gutil.log(cardsHtmlSource);
 	    	gutil.log(' >>>> DONE');
+			console.log(getCardsHtml);
+
 	    	// gutil.log(cardsHtmlSource);
 	 	});
 });
