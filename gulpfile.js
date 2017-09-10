@@ -44,13 +44,80 @@ var paths = {
 	}
 };
 
-// Placeholder for project cards HTML
 var cardsHtmlSource = '';
+
 
 // cleanPath method with a specific path (returns a promise)
 function cleanPath(path) {
 	return del(path);
 }
+
+var createProjectCards = function() {
+	var deferred = Q.defer();
+	var projects = JSON.parse(fs.readFileSync(`${paths.partials}/projects.json`));
+	var projectFilename = '';
+	var templateCard = `${paths.partials}/card-template.html`;
+
+    var promises = Object.keys(projects).map(function (key) {
+        var deferred = Q.defer();
+        var proj = projects[key];
+
+		gutil.log('\t Building Card: ' + gutil.colors.blue(proj['slug']));
+		projectFilename = `${proj['slug']}.html`;
+
+		gulp.src(templateCard)
+			.pipe(template({
+				slug: 		proj['slug'],
+				thumb: 		proj['thumb'],
+				title: 		proj['title'],
+				subtitle: 	proj['subtitle'],
+				button: 	proj['button'],
+				link: 		proj['link'],
+			}))
+			.pipe(rename('card-' + projectFilename))
+			.pipe(gulp.dest(`${paths.project.dest}`))
+			.pipe(through.obj(function (chunk, enc, cb) {
+                deferred.resolve();
+			}));
+        return deferred.promise;
+    });
+    return Q.all(promises);
+};
+
+/*
+	var templateProject = `${paths.partials}/project-template.html`;
+	var projectDest = `${paths.project.dest}`;
+
+
+	var promises = Object.keys(projects).map(function (key) {
+        var deferred = Q.defer();
+        var proj = projects[key];
+
+        projectFilename = `${proj['slug']}.html`;
+		destinationProject = `${projectDest}/${projectFilename}`;
+
+
+		// Go over each of those files, and inject project details
+		gutil.log(`\t Creating ` + gutil.colors.green(`[${projectFilename}]` ));
+
+		gulp.src(templateProject)
+			.pipe(template({
+				slug: projects[key]['slug'],
+				title: projects[key]['title'],
+				subtitle: projects[key]['subtitle'],
+				detail: projects[key]['detail'],
+				media: '',
+			}))
+			// rename to eg: `fifa-gate.html`
+			.pipe(rename(projectFilename))
+			// output file above to `/dist/projects/`
+			.pipe(gulp.dest(paths.project.dest))
+			.on('end', function() {
+				gutil.log(`\t destinationProject ` + gutil.colors.green(`[${destinationProject}]` ));
+			  	return deferred.promise;
+			});
+    });
+    return Q.all(promises);*/
 
 // Clean tasks for various purposes
 gulp.task('clean-css', function (cb) {
@@ -94,39 +161,19 @@ gulp.task('inject-tags', ['clean-html', 'headerfooter'], function () {
 
 // Create project pages
 gulp.task('project-pages', function () {
-	var projects = JSON.parse(fs.readFileSync(`${paths.partials}/projects.json`));
-	//var sourceTemplate = fs.readFileSync(`${paths.partials}/project-template.html`);
-	var templateProject = `${paths.partials}/project-template.html`;
-	var projectDest = `${paths.project.dest}`;
 
-	var promises = Object.keys(projects).map(function (key) {
-        var deferred = Q.defer();
-        var proj = projects[key];
+});
 
-        projectFilename = `${proj['slug']}.html`;
-		destinationProject = `${projectDest}/${projectFilename}`;
-
-
-		// Go over each of those files, and inject project details
-		gutil.log(`\t Creating ` + gutil.colors.green(`[${projectFilename}]` ));
-
-		gulp.src(templateProject)
-			.pipe(template({
-				slug: projects[key]['slug'],
-				title: projects[key]['title'],
-				subtitle: projects[key]['subtitle'],
-				detail: projects[key]['detail'],
-				media: '',
-			}))
-			// rename to eg: `fifa-gate.html`
-			.pipe(rename(projectFilename))
-			// output file above to `/dist/projects/`
-			.pipe(gulp.dest(paths.project.dest));
-
-		gutil.log(`\t destinationProject ` + gutil.colors.green(`[${destinationProject}]` ));
-	  	return deferred.promise;
-    });
-    return Q.all(promises);
+gulp.task('cards', function() {
+	createProjectCards()
+		.then(function(data) {
+			// Append project card HTML source
+				// destinationCard = `${paths.project.dest}/card-${projectFilename}`;
+				// gutil.log(`\t destinationCard ` + gutil.colors.green(`[${destinationCard}]` ));
+                //  gutil.log(cardsHtmlSource);
+	    	gutil.log(' >>>> DONE');
+	    	// gutil.log(cardsHtmlSource);
+	 	});
 });
 // Create project cards on the fly
 gulp.task('project-cards', function () {
@@ -136,10 +183,73 @@ gulp.task('project-cards', function () {
 	var projectFilename = '';
 	var destinationCard = '';
 
+	// Placeholder for project cards HTML
+
 	/*
 	 * Create individual project card HTML files while appending their contents
 	 * to an HTML string for the parent `projects.html` page.
 	 */
+
+	return Promise.all([
+		new Promise(function(resolve, reject) {
+			var key = 0;
+			//Object.keys(projects).map(function (key) {
+				var proj = projects[key];
+
+				projectFilename = `${proj['slug']}.html`;
+	        	destinationCard = `${paths.project.dest}/card-${projectFilename}`;
+
+
+				gulp.src(templateCard)
+					.pipe(template({
+						slug: 		proj['slug'],
+						thumb: 		proj['thumb'],
+						title: 		proj['title'],
+						subtitle: 	proj['subtitle'],
+						button: 	proj['button'],
+						link: 		proj['link'],
+					}))
+					.pipe(rename('card-' + projectFilename))
+					.pipe(gulp.dest(`${paths.project.dest}`))
+					.pipe(through.obj(function (chunk, enc, cb) {
+						// Append project card HTML source
+						cardsHtmlSource += fs.readFileSync(destinationCard, { encoding: 'utf-8' });
+						//deferred.resolve();
+					}))
+					.on('end', resolve);
+			//});
+			gutil.log(gutil.colors.green(' Promise 1 completed '));
+
+		}),
+		new Promise(function(resolve, reject) {
+			gutil.log(gutil.colors.green(' Promise 2 STARTED '));
+
+			gutil.log(cardsHtmlSource);
+
+			// Inject project details into project pages, delete temp card files when done
+			gulp.src(`${basePaths.dest}/projects.html`)
+				.pipe(template({
+					projects: cardsHtmlSource,
+				}))
+				.pipe(gulp.dest(`${basePaths.dest}`))
+				.on('end', resolve);
+
+			/*
+			gulp.src(src + '/*.md')
+				.pipe(plugin())
+				.on('error', reject)
+				.pipe(gulp.dest(dist))
+				.on('end', resolve); */
+			gutil.log(gutil.colors.green(' Promise 2 completed '));
+		})
+	])
+	.then(function () {
+		gutil.log(gutil.colors.green(' .then reached '));
+		console.log(cardsHtmlSource);
+		// Other actions
+	});
+
+	/*
  	var promises = Object.keys(projects).map(function (key) {
         var deferred = Q.defer();
         var proj = projects[key];
@@ -147,15 +257,14 @@ gulp.task('project-cards', function () {
 		projectFilename = `${proj['slug']}.html`;
         destinationCard = `${paths.project.dest}/card-${projectFilename}`;
 
-
 		gulp.src(templateCard)
 			.pipe(template({
-				slug: proj['slug'],
-				thumb: proj['thumb'],
-				title: proj['title'],
-				subtitle: proj['subtitle'],
-				button: proj['button'],
-				link: proj['link'],
+				slug: 		proj['slug'],
+				thumb: 		proj['thumb'],
+				title: 		proj['title'],
+				subtitle: 	proj['subtitle'],
+				button: 	proj['button'],
+				link: 		proj['link'],
 			}))
 			.pipe(rename('card-' + projectFilename))
 			.pipe(gulp.dest(`${paths.project.dest}`))
@@ -168,11 +277,11 @@ gulp.task('project-cards', function () {
         return deferred.promise;
     });
     return Q.all(promises);
+    */
 });
 
 gulp.task('projects-parent', ['project-cards'], function () {
-	gutil.log(`\tInjecting all the project cards into ` +
-		gutil.colors.green(`${basePaths.dest}/projects.html`));
+	gutil.log(`\tInjecting cards > ` + gutil.colors.green(`${basePaths.dest}/projects.html`));
 
 	// Inject project details into project pages, delete temp card files when done
 	gulp.src(`${basePaths.dest}/projects.html`)
