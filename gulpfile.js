@@ -97,40 +97,6 @@ var getCardsHtml = function() {
 	}
 	return cardsHtmlSource;
 };
-/*
-	var templateProject = `${paths.partials}/project-template.html`;
-	var projectDest = `${paths.project.dest}`;
-
-
-	var promises = Object.keys(projects).map(function (key) {
-		var deferred = Q.defer();
-		var proj = projects[key];
-
-		projectFilename = `${proj['slug']}.html`;
-		destinationProject = `${projectDest}/${projectFilename}`;
-
-
-		// Go over each of those files, and inject project details
-		gutil.log(`\t Creating ` + gutil.colors.green(`[${projectFilename}]` ));
-
-		gulp.src(templateProject)
-			.pipe(template({
-				slug: projects[key]['slug'],
-				title: projects[key]['title'],
-				subtitle: projects[key]['subtitle'],
-				detail: projects[key]['detail'],
-				media: '',
-			}))
-			// rename to eg: `fifa-gate.html`
-			.pipe(rename(projectFilename))
-			// output file above to `/dist/projects/`
-			.pipe(gulp.dest(paths.project.dest))
-			.on('end', function() {
-				gutil.log(`\t destinationProject ` + gutil.colors.green(`[${destinationProject}]` ));
-				return deferred.promise;
-			});
-	});
-	return Q.all(promises);*/
 
 // Clean tasks for various purposes
 gulp.task('clean-css', function (cb) {
@@ -155,7 +121,7 @@ gulp.task('headerfooter', function () {
 
 // Page-specific meta tags (title, description, etc)
 // Must wait on headerfooter task to complete
-gulp.task('inject-tags', ['clean-html', 'headerfooter'], function () {
+gulp.task('inject-tags', ['headerfooter'], function () {
 	var metaTags = JSON.parse(fs.readFileSync(`${paths.partials}/metatags.json`));
 	// Inject page titles and meta description tags
 	for (var key in metaTags) {
@@ -172,76 +138,67 @@ gulp.task('inject-tags', ['clean-html', 'headerfooter'], function () {
 
 // Create project pages
 gulp.task('project-pages', function () {
-
-});
-
-// Create project cards on the fly
-gulp.task('cards', ['copy'], function() {
-	//return Promise.all([
-	//	new Promise(function(resolve, reject) {
-			createProjectCards()
-				.then(function() {
-					// Get HTML string of all project cards
-					var cardsHtmlSource = getCardsHtml();
-
-					// Delete the physical files
-					cleanPath('dist/project/card-*.html');
-
-					gutil.log(`\t Injecting card html > ` + gutil.colors.green(`${basePaths.dest}/projects.html`));
-
-					// Inject project details into project pages, delete temp card files when done
-					gulp.src(`${basePaths.dest}/projects.html`)
-						.pipe(template({
-							projects: cardsHtmlSource,
-						}))
-						.pipe(rename('projects.html'))
-						.pipe(gulp.dest(`${basePaths.dest}`))
-						.on('end', resolve);
-				});
-		//}) // End Promise
-	//]);
-});
-
-gulp.task('project-cards', function () {
 	var projects = JSON.parse(fs.readFileSync(`${paths.partials}/projects.json`));
-	var templateCard = `${paths.partials}/card-template.html`;
-
+	var templateProject = `${paths.partials}/project-template.html`;
+	var projectDest = `${paths.project.dest}`;
 	var projectFilename = '';
-	var destinationCard = '';
 
-	// Placeholder for project cards HTML
-
-	/*
+	// Loop through projects array, spawing individual project files
 	var promises = Object.keys(projects).map(function (key) {
 		var deferred = Q.defer();
 		var proj = projects[key];
 
 		projectFilename = `${proj['slug']}.html`;
-		destinationCard = `${paths.project.dest}/card-${projectFilename}`;
+		destinationProject = `${projectDest}/${projectFilename}`;
 
-		gulp.src(templateCard)
+		gutil.log(`\t Creating ` + gutil.colors.green(`[${projectFilename}]` ));
+
+		// Use `project-template.html` as the template
+		gulp.src(templateProject)
 			.pipe(template({
 				slug: 		proj['slug'],
-				thumb: 		proj['thumb'],
 				title: 		proj['title'],
 				subtitle: 	proj['subtitle'],
-				button: 	proj['button'],
-				link: 		proj['link'],
+				detail: 	proj['detail'],
+				media: 		'',
 			}))
-			.pipe(rename('card-' + projectFilename))
-			.pipe(gulp.dest(`${paths.project.dest}`))
-			.pipe(through.obj(function (chunk, enc, cb) {
-				// Append project card HTML source
-				cardsHtmlSource += fs.readFileSync(destinationCard, { encoding: 'utf-8' });
-				deferred.resolve();
-			}));
-
-		return deferred.promise;
+			// rename to eg: `{project-slug}.html`
+			.pipe(rename(projectFilename))
+			// output file above to `/dist/projects/`
+			.pipe(gulp.dest(paths.project.dest))
+			.on('end', function() {
+				return deferred.promise;
+			});
 	});
 	return Q.all(promises);
-	*/
 });
 
+// Create project cards on the fly
+gulp.task('project-cards', ['copy'], function() {
+	//return Promise.all([
+	//	new Promise(function(resolve, reject) {
+	createProjectCards()
+		.then(function() {
+			// Get HTML string of all project cards
+			var cardsHtmlSource = getCardsHtml();
+
+			// Delete the physical files
+			cleanPath('dist/project/card-*.html');
+
+			gutil.log(`\t Injecting card html > ` + gutil.colors.green(`${basePaths.dest}/projects.html`));
+
+			// Inject project details into project pages, delete temp card files when done
+			gulp.src(`${basePaths.dest}/projects.html`)
+				.pipe(template({
+					projects: cardsHtmlSource,
+				}))
+				.pipe(rename('projects.html'))
+				.pipe(gulp.dest(`${basePaths.dest}`))
+				.on('end', resolve);
+		});
+		//}) // End Promise
+	//]);
+});
 
 // Compile SASS into CSS, auto-injecting changed files into browser
 gulp.task('sass', ['clean-css'], function() {
@@ -307,6 +264,8 @@ gulp.task('copy', function() {
 // Static Server + watch scss/html files
 gulp.task('serve',
 	[
+		'project-cards',
+		'project-pages',
 		'headerfooter',
 		'sass',
 		'minify-css',
@@ -324,7 +283,7 @@ gulp.task('serve',
 				paths.partials + '/*.html',
 				basePaths.src + '/*.html',
 				paths.partials + '/*.json',
-			], ['headerfooter', 'inject-tags', 'project-templates']);
+			], ['headerfooter', 'inject-tags', 'project-pages']);
 
 		// Enable file watchers which will trigger a browser reload
 		gulp.watch(paths.styles.src + '/*.scss', ['sass']);
