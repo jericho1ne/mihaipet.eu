@@ -79,14 +79,28 @@
 		}
 	},
 	{
-		"slug": "mapbox-live-shows",
-		"title": "Live show venue map",
+		"slug": "mapping-live-show-venues",
+		"title": "Mapping Live Show Venues",
 		"subtitle": "Los Angeles live music venue density map.",
 		"detail": "Created sing Mapbox's online tools.",
 		"button": "Map Demo",
 		"link": "project/live-shows/",
 		"media": {
 			"thumb": "project/live-shows.jpg",
+			"images": [],
+			"video": []
+		}
+	},
+	{
+		"slug": "oahu-traffic-incidents",
+		"title": "Mapping Oahu Traffic Incidents",
+		"subtitle": "Tracking traffic incidents on Oahu over a two week period.",
+		"detail": "Created with CartoDB using a publicly available dataset.",
+		"button": "Map Demo",
+		"link": "project/oahu-traffic-incidents.html",
+		"media": {
+			"embed": "<iframe width='90%' height='600px' frameborder='0' src='http://cdb.io/1azFtsJ'></iframe>",
+			"thumb": "project/oahu-traffic-incidents.jpg",
 			"images": [],
 			"video": []
 		}

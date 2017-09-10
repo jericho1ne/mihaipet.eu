@@ -141,10 +141,9 @@ button {
 	font-weight: 400;
 	background-color: #008832;
 	color: #fff;
-	padding: 4px;
-	width: 22px;
-	height: 28px;
-	max-width: 28px;
+	padding: 5px;
+	width: 30px;
+	height: 32px;
 	border-radius: 2px;
 	border: none;
 }
