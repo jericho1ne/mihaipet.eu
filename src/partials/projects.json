@@ -1,14 +1,29 @@
 [
 	{
 		"slug": "fifa-gate",
-		"title": "FIFA Gate",
-		"subtitle": "FIFA bribe schemes visualization, featured on <a href=\"http://thefieldsofgreen.com/2015/06/19/fifa-infographic/\">USA Today's Fields of Green</a>.",
-		"detail": "Collaborative project with <a href=\"https://uscpublicdiplomacy.org/users/rook_campbell\">Rook Campbell</a>, intended to showcase the global extent of FIFA's corruption.  Given the sheer number of detailed allegations made, this visualization made use of icons to represent each Actor (aka \"Players\"), colors for each Connection type, and varying line types for Actual vs Planned payoffs.",
+		"title": "FIFA Gate Data Viz",
+		"subtitle": "Visualization showcasing global corruption schemes via money flows between FIFA officials and co-conspirators.",
+		"detail": " Icons represent each \"Actor\" involved, Colors denote Connection types, and Line types define Actual vs Planned payoffs. Featured on <a href=\"http://thefieldsofgreen.com/2015/06/19/fifa-infographic/\">USA Today's Fields of Green</a>. Collaborative project with <a href=\"https://uscpublicdiplomacy.org/users/rook_campbell\">Rook Campbell, PhD</a>.",
 		"type": "data visualization",
 		"button": "Live Demo",
-		"link": "project/fifa-gate/",
+		"link": "project/fifa-gate.html",
 		"media": {
+			"embed": "<iframe src='http://mihaipet.eu/media/projects/visualization-fifagate' width='100%' height='700' frameborder='0' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>",
 			"thumb": "project/fifa-gate.jpg",
+			"images": [],
+			"video": []
+		}
+	},
+	{
+		"slug": "mapping-live-music",
+		"title": "Tracking Live Music Venues",
+		"subtitle": "Los Angeles live music venue density map.",
+		"detail": "A visualization of 210 live music events taking place at 87 different venues across Los Angeles, over the course of a week. Data scraped from Ticketfly.",
+		"button": "Live Demo",
+		"link": "project/mapping-live-music.html",
+		"media": {
+			"embed": "<iframe src='https://jericho1ne.carto.com/viz/e2d9efda-4c42-11e3-b6c4-a779afcc8bc7/embed_map' width='100%' height='520' frameborder='0' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>",
+			"thumb": "project/live-shows.jpg",
 			"images": [],
 			"video": []
 		}
@@ -26,6 +41,19 @@
 			"video": []
 		}
 	},
+	{
+		"slug": "law-offices",
+		"title": "Law Offices of Gail Dulay",
+		"subtitle": "Responsive framework website with a heavy SEO focus, relying heavily on custom-built HTML templates.",
+		"detail": "",
+		"button": "Website",
+		"link": "http://attorneydulay.com/",
+		"media": {
+			"thumb": "project/law-offices.jpg",
+			"images": [],
+			"video": []
+		}
+	},
     {
 		"slug": "renova-bikes",
 		"title": "Renova Bikes",
@@ -35,6 +63,19 @@
 		"link": "http://renovabikes.com/app",
 		"media": {
 			"thumb": "project/renova-bikes.jpg",
+			"images": [],
+			"video": []
+		}
+	},
+	{
+		"slug": "waterbowl-mobile-app",
+		"title": "Waterbowl",
+		"subtitle": "A social network for dog lovers (iOS mobile app).",
+		"detail": "",
+		"button": "Screenshots",
+		"link": "project/waterbowl",
+		"media": {
+			"thumb": "project/waterbowl.jpg",
 			"images": [],
 			"video": []
 		}
@@ -52,51 +93,12 @@
 			"video": []
 		}
 	},
-	 {
-		"slug": "waterbowl-mobile-app",
-		"title": "Waterbowl",
-		"subtitle": "A social network for dog lovers (iOS mobile app).",
-		"detail": "",
-		"button": "Screenshots",
-		"link": "project/waterbowl",
-		"media": {
-			"thumb": "project/waterbowl.jpg",
-			"images": [],
-			"video": []
-		}
-	},
-	 {
-		"slug": "law-offices",
-		"title": "Law Offices of Gail Dulay",
-		"subtitle": "Responsive framework website with a heavy SEO focus, relying heavily on custom-built HTML templates.",
-		"detail": "",
-		"button": "Website",
-		"link": "http://attorneydulay.com/",
-		"media": {
-			"thumb": "project/law-offices.jpg",
-			"images": [],
-			"video": []
-		}
-	},
-	{
-		"slug": "mapping-live-show-venues",
-		"title": "Mapping Live Show Venues",
-		"subtitle": "Los Angeles live music venue density map.",
-		"detail": "Created sing Mapbox's online tools.",
-		"button": "Map Demo",
-		"link": "project/live-shows/",
-		"media": {
-			"thumb": "project/live-shows.jpg",
-			"images": [],
-			"video": []
-		}
-	},
 	{
 		"slug": "oahu-traffic-incidents",
 		"title": "Mapping Oahu Traffic Incidents",
 		"subtitle": "Tracking traffic incidents on Oahu over a two week period.",
 		"detail": "Created with CartoDB using a publicly available dataset.",
-		"button": "Map Demo",
+		"button": "Live Demo",
 		"link": "project/oahu-traffic-incidents.html",
 		"media": {
 			"embed": "<iframe width='90%' height='600px' frameborder='0' src='http://cdb.io/1azFtsJ'></iframe>",

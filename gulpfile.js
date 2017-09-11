@@ -146,35 +146,33 @@ gulp.task('project-pages', function () {
 
 // Create project cards on the fly
 gulp.task('project-cards', ['copy-html'], function() {
-	return Promise.all([
-		new Promise(function(resolve, reject) {
-			createProjectCards()
-				.then(function() {
-					// Get HTML string of all project cards
-					var cardsHtmlSource = getCardsHtml();
+	return new Promise(function(resolve, reject) {
+		createProjectCards()
+			.then(function() {
+				// Get HTML string of all project cards
+				var cardsHtmlSource = getCardsHtml();
 
-					// Delete the physical files
-					cleanPath('dist/project/card-*.html');
+				// Delete the physical files
+				cleanPath('dist/project/card-*.html');
 
-					gutil.log(`\t Injecting card html > ` + gutil.colors.green(`${basePaths.dest}/projects.html`));
+				gutil.log(`\t Injecting card html > ` + gutil.colors.green(`${basePaths.dest}/projects.html`));
 
-					// Inject project details into project pages, delete temp card files when done
-					gulp.src(`${basePaths.dest}/projects.html`)
-						.pipe(template({
-							projects: cardsHtmlSource,
-						}))
-						.pipe(rename('projects.html'))
-						.pipe(gulp.dest(`${basePaths.dest}`))
-						.on('end', resolve);
-				});
-		}) // End Promise
-	]);
+				// Inject project details into project pages, delete temp card files when done
+				gulp.src(`${basePaths.dest}/projects.html`)
+					.pipe(template({
+						projects: cardsHtmlSource,
+					}))
+					.pipe(rename('projects.html'))
+					.pipe(gulp.dest(`${basePaths.dest}`))
+					.on('end', resolve);
+			});
+	}); // End Promise
 });
 
 // Inject the page header and footer, copy them to destination folder
 // Has to wait for `project-cards` to finish
 gulp.task('main-headerfooter', ['project-cards'], function () {
-	gutil.log(`\t Started ` + gutil.colors.green(`main-headerfooter`) + ` task`);
+	gutil.log(`\t Starting ` + gutil.colors.green(`main-headerfooter`) + ` task`);
 
 	// Only perform this task on `dist/{main-file}.html`
 	return gulp.src(basePaths.dest + '/*.html')
@@ -182,7 +180,7 @@ gulp.task('main-headerfooter', ['project-cards'], function () {
 		.pipe(headerfooter.footer(paths.partials + '/footer.html'))
 		.pipe(gulp.dest(basePaths.dest))
 		.on('end', function() {
-			gutil.log(`>> Finished ` + gutil.colors.green(`main-headerfooter`) + ` task`);
+			gutil.log(`Finished ` + gutil.colors.green(`main-headerfooter`) + ` task`);
 		});
 });
 
@@ -203,8 +201,8 @@ gulp.task('project-headerfooter', ['project-pages'], function () {
 
 // Page-specific meta tags (title, description, etc)
 // Must wait on headerfooter task to complete
-gulp.task('inject-tags', ['main-headerfooter'], function () {
-	var metaTags = JSON.parse(fs.readFileSync(`${paths.partials}/metatags.json`));
+gulp.task('inject-main-tags', ['main-headerfooter'], function () {
+	var metaTags = JSON.parse(fs.readFileSync(`${paths.partials}/main-tags.json`));
 	// Inject page titles and meta description tags
 	for (var key in metaTags) {
 		var destinationFile = `${basePaths.dest}/${metaTags[key]['file']}.html`;
@@ -215,6 +213,21 @@ gulp.task('inject-tags', ['main-headerfooter'], function () {
 				description: metaTags[key]['description'],
 			}))
 			.pipe(gulp.dest(`${basePaths.dest}`));
+	} // End for loop through meta tags
+});
+
+gulp.task('inject-project-tags', ['project-headerfooter'], function () {
+	var projects = JSON.parse(fs.readFileSync(`${paths.partials}/projects.json`));
+	// Inject page titles and meta description tags
+	for (var key in projects) {
+		var destinationFile = `${paths.project.dest}/${projects[key]['slug']}.html`;
+		gutil.log(`\t Adding tags to ` + gutil.colors.green(`[ ${destinationFile} ]` ));
+		gulp.src(destinationFile)
+			.pipe(template({
+				title: projects[key]['title'],
+				description: projects[key]['subtitle'],
+			}))
+			.pipe(gulp.dest(`${paths.project.dest}`));
 	} // End for loop through meta tags
 });
 
@@ -288,6 +301,8 @@ gulp.task('copy', function() {
 // Static Server + watch scss/html files
 gulp.task('serve',
 	[
+		'clean-html',
+		'copy-html',
 		'project-cards',
 		'project-pages',
 		'main-headerfooter',
@@ -296,7 +311,7 @@ gulp.task('serve',
 		'minify-css',
 		'minify-js',
 		'copy',
-		'inject-tags',
+		'inject-main-tags',
 	], function() {
 		// Initialize a local server in the styleguide root directory
 		browserSync.init({
@@ -306,9 +321,9 @@ gulp.task('serve',
 		// Watch all HTML files and the meta tags JSON
 		gulp.watch([
 				paths.partials + '/*.html',
-				basePaths.src + '/**/*.html',
+				basePaths.src + '/*.html',
 				paths.partials + '/*.json',
-			], ['project-cards', 'project-pages', 'main-headerfooter', 'project-headerfooter', 'inject-tags']);
+			], ['project-cards', 'project-pages', 'main-headerfooter', 'project-headerfooter', 'inject-main-tags']);
 
 		// Enable file watchers which will trigger a browser reload
 		gulp.watch(paths.styles.src + '/*.scss', ['sass']);

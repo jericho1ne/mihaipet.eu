@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>http://mihaipet.eu/</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/index.html</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/projects.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/film-and-photo.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/media/mihai-peteu-resume.pdf</loc>
+  <lastmod>2017-08-28T06:26:37+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/project/fifa-gate.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/project/mapping-live-music.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/project/waterbowl</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/project/oahu-traffic-incidents.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/media/projects/visualization-fifagate/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/project/index.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/project/projects.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://mihaipet.eu/project/film-and-photo.html</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+</urlset>
