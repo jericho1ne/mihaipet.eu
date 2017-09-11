@@ -73,10 +73,10 @@
 		"subtitle": "A social network for dog lovers (iOS mobile app).",
 		"detail": "",
 		"button": "Screenshots",
-		"link": "project/waterbowl",
+		"link": "project/waterbowl-mobile-app.html",
 		"media": {
 			"thumb": "project/waterbowl.jpg",
-			"images": [],
+			"images": ["waterbowl-01.jpg", "waterbowl-02.jpg"],
 			"video": []
 		}
 	},

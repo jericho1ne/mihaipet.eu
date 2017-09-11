@@ -117,12 +117,20 @@ gulp.task('project-pages', function () {
 	var promises = Object.keys(projects).map(function (key) {
 		var deferred = Q.defer();
 		var proj = projects[key];
+		var imageHolder = '';
 
 		projectFilename = `${proj['slug']}.html`;
 		destinationProject = `${projectDest}/${projectFilename}`;
 
 		gutil.log(`\t Creating ` + gutil.colors.green(`[${projectFilename}]` ));
 
+		// If image files exist, create parent elemen to hold them
+		if (proj['media']['images'].length) {
+			gutil.log(proj['media']['images']);
+			for (var i in proj['media']['images']) {
+				imageHolder += `<div class=\"\"><img src=\"${proj['media']['images'][i]}\"></div>`;
+			}
+		}
 		// Use `project-template.html` as the template
 		gulp.src(templateProject)
 			.pipe(template({
@@ -131,7 +139,7 @@ gulp.task('project-pages', function () {
 				subtitle: 	proj['subtitle'],
 				detail: 	proj['detail'],
 				embed: 		proj['media']['embed'],
-				media: 		'',
+				media: 		imageHolder,
 			}))
 			// rename to eg: `{project-slug}.html`
 			.pipe(rename(projectFilename))
