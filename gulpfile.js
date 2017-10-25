@@ -128,7 +128,8 @@ gulp.task('project-pages', function () {
 		if (proj['media']['images'].length) {
 			gutil.log(proj['media']['images']);
 			for (var i in proj['media']['images']) {
-				imageHolder += `<div class=\"\"><img src=\"${proj['media']['images'][i]}\"></div>`;
+				imageHolder +=
+					`<div class=\"\"><img class="img-fluid" src=\"${proj['media']['images'][i]}\"></div>`;
 			}
 		}
 		// Use `project-template.html` as the template
@@ -138,6 +139,7 @@ gulp.task('project-pages', function () {
 				title: 		proj['title'],
 				subtitle: 	proj['subtitle'],
 				detail: 	proj['detail'],
+				tech: 		proj['tech'],
 				embed: 		proj['media']['embed'],
 				media: 		imageHolder,
 			}))
@@ -291,7 +293,9 @@ gulp.task('copy', function() {
 
 		// Copy misc root items (favicons, sitemap) and project images
 		gulp.src([
+			`${basePaths.src}/*.js`,
 			`${basePaths.src}/*.ico`,
+			`${basePaths.src}/*.json`,
 			`${basePaths.src}/*.png`,
 			`${basePaths.src}/*.xml`,
 			`${basePaths.src}/**/*.jpg`,
@@ -311,15 +315,15 @@ gulp.task('serve',
 	[
 		'clean-html',
 		'copy-html',
-		'project-cards',
-		'project-pages',
+		//'project-cards',
+		//'project-pages',
 		'main-headerfooter',
-		'project-headerfooter',
+		//'project-headerfooter',
 		'sass',
 		'minify-css',
 		'minify-js',
 		'copy',
-		'inject-main-tags',
+		// 'inject-main-tags',
 	], function() {
 		// Initialize a local server in the styleguide root directory
 		browserSync.init({
@@ -338,8 +342,15 @@ gulp.task('serve',
 		gulp.watch(paths.styles.dest + '/*.css', ['minify-css']);
 		gulp.watch(paths.scripts.src + '/*.js' , ['minify-js']);
 
+		// Copy over then reload) when these change
+		gulp.watch([
+			basePaths.src + '/*.js',
+			basePaths.src + '/*.json'
+		], ['copy']);
+
 		gulp.watch([
 			basePaths.dest + '/*.html',
+			basePaths.dest + '/*.json',
 			paths.scripts.dest + '/*.js',
 		]).on('change', browserSync.reload);
 	}

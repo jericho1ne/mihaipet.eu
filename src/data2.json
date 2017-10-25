@@ -1,0 +1,27 @@
+{
+	"nodes": [
+		{ "id": 0, "name": "Software Development",	 	"group": 1 },
+		{ "id": 1, "name": "Visual Content",	"group": 2 },
+
+		{ "id": 2, "name": "Front End", 		"group": 1 },
+		{ "id": 3, "name": "Databases", 		"group": 1 },
+		{ "id": 4, "name": "Tools/Automation", 	"group": 1 },
+
+		{ "id": 5, "name": "DataViz", 			"group": 2 },
+		{ "id": 6, "name": "UI/UX",	 			"group": 2 },
+		{ "id": 7, "name": "Film/Photo", 		"group": 2 }
+	],
+
+	"links":[
+		{ "source": 0, "target": 1, "value": 60 },
+		{ "source": 1, "target": 0, "value": 60 },
+
+		{ "source": 0, "target": 2, "value": 2 },
+		{ "source": 0, "target": 3, "value": 2 },
+		{ "source": 0, "target": 4, "value": 2 },
+
+		{ "source": 1, "target": 5, "value": 2 },
+		{ "source": 1, "target": 6, "value": 2 },
+		{ "source": 1, "target": 7, "value": 2 }
+	]
+}

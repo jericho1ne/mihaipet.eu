@@ -22,17 +22,41 @@
 }
 
 @mixin build-responsive-page($m) {
+	.nav-masthead {
+		.nav-link {
+			padding: $m*.25rem $m*.15rem;
+		}
+	}
+	#menu-bar {
+		padding:  $m*.5rem $m*1.25rem;
+	}
+	.cover {
+		padding: $m*2% $m*12%;
+		margin-top: $m*10%;
+	}
 	.card {
 		// border: 1px solid red;
 		margin: $m*1rem auto;
 		margin-bottom: $m*1rem;
 	}
+	.pad-top {
+		padding-top: $m*1.25em;
+	}
 	.btn {
 		font-size: $m*1rem;
 	}
-    .navbar-default {
-        padding: $m*4px $m*20px;
-    }
+	.btn-secondary {
+		$how-wide: $m * 44px;
+		width: $how-wide;
+		height: $how-wide;
+		padding: $m * 6px;
+		margin: $how-wide / 8;
+		border-radius: $how-wide / 2;
+		.svg-icon {
+			width: $m*32px;
+			height: $m*32px;
+		}
+	}
     hr {
         margin: $m*30px auto;
     }
