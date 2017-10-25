@@ -1,8 +1,23 @@
 {
 	"nodes": [
-		{ "id": 0, "name": "Software",	 	"group": 1 },
-		{ "id": 1, "name": "Visual",		"group": 2 },
-		{ "id": 2, "name": "E-Commerce",	"group": 3 },
+		{
+			"id": 0,
+			"name": "Software",
+			"group": 1,
+		  	"img": "media/icons/cog.png"
+		},
+		{
+			"id": 1,
+			"name": "Visual",
+			"group": 2,
+		  	"img": "media/icons/paintbrush.png"
+		},
+		{
+			"id": 2,
+			"name": "E-Commerce",
+			"group": 3,
+		  	"img": "media/icons/ecommerce.png"
+		},
 
 		{ "id": 3, "name": "Front End", 	"group": 1 },
 		{ "id": 4, "name": "Back End", 		"group": 1 },
