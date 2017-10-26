@@ -21,6 +21,14 @@ body {
 	}
 }
 
+#forcegraph {
+	transition:opacity 2.5s linear;
+}
+.invisible {
+	opacity: 0;
+	transition:opacity 2.5s linear;
+
+}
 img.img-fluid {
 	border: 0;
 	padding-bottom: 12px;

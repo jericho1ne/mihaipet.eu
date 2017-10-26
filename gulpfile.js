@@ -316,14 +316,14 @@ gulp.task('serve',
 		'clean-html',
 		'copy-html',
 		//'project-cards',
-		//'project-pages',
+		'project-pages',
 		'main-headerfooter',
-		//'project-headerfooter',
+		'project-headerfooter',
 		'sass',
 		'minify-css',
 		'minify-js',
 		'copy',
-		// 'inject-main-tags',
+		'inject-main-tags',
 	], function() {
 		// Initialize a local server in the styleguide root directory
 		browserSync.init({

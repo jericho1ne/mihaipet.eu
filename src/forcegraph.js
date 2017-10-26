@@ -1,19 +1,21 @@
 $(document).ready(function() {
-	//Constants for the SVG
+	$('#forcegraph').removeClass('invisible');
+
+	// Constants for the SVG
 	var width = 380,
-		height = 320,
+		height = 360,
 		circleRadius = 11,
 		iconSize = 32;
 
 	// Color scales (10, 20, 20b, 20c)
-	// https://github.com/d3/d3-3.x-api-reference/blob/master/Ordinal-Scales.md
+	// https://github.com/d3/d3-3.x-api-reference/blob/master/Ordinal-Scales.md#categorical-colors
 	var color = d3.scale.category10();
 
 	//Set up the force layout
 	var force = d3.layout.force()
-		.gravity(.6)
-		.charge(-2000)
-		.distance(80)
+		.gravity(.21)
+		.charge(-1200)
+		.distance(60)
 		.size([width, height]);
 
 	// Append SVG to the DOM
