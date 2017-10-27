@@ -4,47 +4,50 @@
 			"id": 0,
 			"name": "Software",
 			"group": 1,
-		  	"img": "media/icons/cog.png"
+		  	"img": "media/icons/cog.png",
+		  	"size": 10
 		},
 		{
 			"id": 1,
 			"name": "Visual",
 			"group": 2,
-		  	"img": "media/icons/paintbrush.png"
+		  	"img": "media/icons/paintbrush.png",
+		  	"size": 10
 		},
 		{
 			"id": 2,
 			"name": "E-Commerce",
 			"group": 3,
-		  	"img": "media/icons/ecommerce.png"
+		  	"img": "media/icons/ecommerce.png",
+		  	"size": 10
 		},
 
-		{ "id": 3, "name": "Front End", 	"group": 1 },
-		{ "id": 4, "name": "Back End", 		"group": 1 },
-		{ "id": 5, "name": "Databases", 	"group": 1 },
+		{ "id": 3, "name": "Front End", 	"group": 1, "size": 12 },
+		{ "id": 4, "name": "Back End", 		"group": 1, "size": 8 },
+		{ "id": 5, "name": "Databases", 	"group": 1, "size": 6 },
 
-		{ "id": 6, "name": "Film/Photo", 	"group": 2 },
-		{ "id": 7, "name": "DataViz", 		"group": 2 },
-		{ "id": 8, "name": "UI/UX",	 		"group": 2 },
+		{ "id": 6, "name": "Film/Photo", 	"group": 2, "size": 12 },
+		{ "id": 7, "name": "DataViz", 		"group": 2, "size": 6 },
+		{ "id": 8, "name": "UI/UX",	 		"group": 2, "size": 8 },
 
-		{ "id": 9, 	"name": "SEO", 		"group": 3 },
-		{ "id": 10, "name": "Analytics", "group": 3 }
+		{ "id": 9, 	"name": "SEO", 			"group": 3, "size": 6 },
+		{ "id": 10, "name": "Analytics", "group": 3, "size": 6 }
 	],
 
 	"links":[
-		{ "source": 0, "target": 1, "value": 0 },
-		{ "source": 1, "target": 2, "value": 0 },
-		{ "source": 2, "target": 0, "value": 0 },
+		{ "source": 0, "target": 1, "thickness": 0 },
+		{ "source": 1, "target": 2, "thickness": 0 },
+		{ "source": 2, "target": 0, "thickness": 0 },
 
-		{ "source": 0, "target": 3, "value": 180 },
-		{ "source": 0, "target": 4, "value": 100 },
-		{ "source": 0, "target": 5, "value": 120 },
+		{ "source": 0, "target": 3, "thickness": 80 },
+		{ "source": 0, "target": 4, "thickness": 80 },
+		{ "source": 0, "target": 5, "thickness": 80 },
 
-		{ "source": 1, "target": 6, "value": 180 },
-		{ "source": 1, "target": 7, "value": 100 },
-		{ "source": 1, "target": 8, "value": 50 },
+		{ "source": 1, "target": 6, "thickness": 80 },
+		{ "source": 1, "target": 7, "thickness": 80 },
+		{ "source": 1, "target": 8, "thickness": 80 },
 
-		{ "source": 2, "target": 9, "value": 40 },
-		{ "source": 2, "target": 10, "value": 30 }
+		{ "source": 2, "target": 9, "thickness": 80 },
+		{ "source": 2, "target": 10, "thickness": 80 }
 	]
 }

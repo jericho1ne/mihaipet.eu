@@ -40,7 +40,7 @@ $(document).ready(function() {
 			.enter().append("line")
 			.attr("class", "link")
 			.style("stroke-width", function (d) {
-			return Math.sqrt(d.value);
+			return Math.sqrt(d.thickness);
 		});
 
 		// Do the same with the each node's circle
@@ -50,7 +50,7 @@ $(document).ready(function() {
 			.attr("class", "node")
 			.call(force.drag);
 		node.append("circle")
-			.attr("r", circleRadius)
+			.attr("r", function(d) { return d.size })
 			.style("fill", function (d) {
 			return color(d.group);
 		});
@@ -61,7 +61,7 @@ $(document).ready(function() {
 
 		// Append image with a slight offset
 		node.append("image")
-			.attr("xlink:href",function(d) { return d.img })
+			.attr("xlink:href", function(d) { return d.img })
 			.attr("height", iconSize)
 			.attr("width", iconSize);
 
@@ -83,10 +83,13 @@ $(document).ready(function() {
 				.attr("cy", function (d) { return d.y;});
 
 
-			d3.selectAll("text").attr("x", function (d) { return d.x * xMultiplier;})
+			d3.selectAll("text")
+				.attr("x", function (d) {
+					return d.x * xMultiplier;
+				})
 				.attr("y", function (d) {
-				return d.y;
-			});
-		});
+					return d.y;
+				});
+		}); // End force.on()
 	});
 });
