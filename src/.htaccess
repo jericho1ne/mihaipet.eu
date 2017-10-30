@@ -1,3 +1,5 @@
+ModPagespeed off
+
 RewriteEngine on
 RewriteBase /
 

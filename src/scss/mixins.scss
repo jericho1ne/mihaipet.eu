@@ -10,7 +10,6 @@
     background-size: cover;
     -o-background-size: cover;
 }
-
 @mixin banner-image($img) {
     background-image: url($img);
     position: relative;
@@ -21,6 +20,7 @@
     background-repeat: no-repeat;
 }
 
+// Automagically resize _everything_
 @mixin build-responsive-page($m) {
 	.nav-masthead {
 		.nav-link {
@@ -28,12 +28,47 @@
 		}
 	}
 	#menu-bar {
-		padding:  $m*.5rem $m*1.05rem;
+		padding: $m*.5rem $m*1.05rem;
 	}
+
+	hr {
+        margin: $m*30px auto;
+    }
+    hr.spacer {
+        margin: $m*10px auto;
+    }
+
+    body {
+        font-size: $m*$font-size-base;
+        p {
+            line-height: $m * 1.68;
+            margin-top: $m*10px;
+        	font-size: $m * $font-size-base;
+        }
+        h5 {
+            line-height: $m*160%;
+        }
+    }
+    h1,
+    .hero-text {
+    	margin: $m*16px 0;
+        font-size: $h1FontSize * $m;
+    }
+    h2 { font-size: $h2FontSize * $m; margin: $m*14px 0; }
+    h3 { font-size: $h3FontSize * $m; margin: $m*12px 0; }
+    h4 { font-size: $h4FontSize * $m; margin: $m*8px 0; }
+    h5 { font-size: $h5FontSize * $m; margin: $m*6px 0; }
+    h6 { font-size: $h6FontSize * $m; margin: $m*4px 0; }
+
 	.cover {
-		padding: $m*2% $m*4%;
+		padding: $m*2% $m*10%;
 		margin-top: $m*10%;
 	}
+
+    // No space above sutitle to keep compact
+    .subtitle {
+        margin-top: -$m*8px;
+    }
 	.card {
 		// border: 1px solid red;
 		margin: $m*1rem auto;
@@ -46,10 +81,10 @@
 		font-size: $m*1rem;
 	}
 	.btn-secondary {
-		$how-wide: $m * 44px;
+		$how-wide: $m * 48px;
 		width: $how-wide;
 		height: $how-wide;
-		padding: $m * 6px;
+		padding: $m * 7px;
 		margin: $how-wide / 8;
 		border-radius: $how-wide / 2;
 		.svg-icon {
@@ -57,42 +92,6 @@
 			height: $m*32px;
 		}
 	}
-    hr {
-        margin: $m*30px auto;
-    }
-    hr.spacer {
-        margin: $m*10px auto;
-    }
-    h1 { margin: $m*16px 0; }
-    h2 { margin: $m*14px 0; }
-    h3 { margin: $m*12px 0; }
-    h4 { margin: $m*8px 0; }
-    h5 { margin: $m*6px 0; }
-    h6 { margin: $m*4px 0; }
-    // No space above sutitle to keep compact
-    .subtitle {
-        margin-top: -$m*8px;
-    }
-
-    body {
-        font-size: $m*$font-size-base;
-        p {
-            line-height: $m * 1.68;
-            margin-top: $m*10px;
-        }
-        h5 {
-            line-height: $m*160%;
-        }
-    }
-    h1,
-    .hero-text {
-        font-size: $h1FontSize * $m;
-    }
-    h2 { font-size: $h2FontSize * $m; }
-    h3 { font-size: $h3FontSize * $m; }
-    h4 { font-size: $h4FontSize * $m; }
-    h5 { font-size: $h5FontSize * $m; }
-    h6 { font-size: $h6FontSize * $m; }
 
     // Add space between columns
     *[class^='col-sm'] {

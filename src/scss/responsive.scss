@@ -6,7 +6,7 @@ $fontSizeIncr: 1.2px;
 
 /* Small. Above 34em (544px) */
 @media screen and (min-width: 1em) {
-	@include build-responsive-page(0.8);
+	@include build-responsive-page(0.75);
 }
 @media screen and (min-width: 34em) {
 	@include build-responsive-page(0.86);
