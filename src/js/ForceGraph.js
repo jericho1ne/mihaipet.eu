@@ -1,16 +1,21 @@
-$(document).ready(function() {
-	var resizeId;
-	$(window).resize(function() {
-	    clearTimeout(resizeId);
-	    resizeId = setTimeout(doneResizing, 800);
-	});
-	function doneResizing() {
-		$('#forcegraph').addClass('invisible');
-	    setTimeout(drawForcegraph, 500);
-	}
-	drawForcegraph();
+/**
+ * D3 Forcegraph wrapper
+ * https://bl.ocks.org/mbostock/4062045
+ */
+class ForceGraph {
+    constructor(width) {
+        this.width = width;
+    }
 
-	function drawForcegraph() {
+    setGraphWidth(newWidth) {
+    	this.width = newWidth;
+    }
+
+    getGraphWidth(newWidth) {
+    	return this.width;
+    }
+
+	drawForcegraph() {
 		$('#forcegraph').empty().removeClass('invisible');
 
 		// Constants for the SVG
@@ -104,5 +109,5 @@ $(document).ready(function() {
 			}); // End force.on()
 		});
 	}
-
-});
+}
+export default ForceGraph;

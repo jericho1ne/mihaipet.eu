@@ -1,19 +1,24 @@
 var
-	fs = require('fs'),
-	gulp = require('gulp'),
+	babel = require('gulp-babel'),
+	browserSync = require('browser-sync').create(),
 	del = require('del'),
+	fs = require('fs'),
+	// ghPages = require('gulp-gh-pages'),
+	gulp = require('gulp'),
+	gutil = require('gulp-util'),
+	headerfooter = require('gulp-headerfooter'),
+	// importJson = require('gulp-sass-import-json'),
 	merge = require('merge-stream'),
 	Q = require('q'),
+	rename = require("gulp-rename"),
+	sass = require('gulp-sass'),
+	sourcemaps = require('gulp-sourcemaps'),
 	through = require('through2'),
 	template = require('gulp-template'),
-	headerfooter = require('gulp-headerfooter'),
-	sass = require('gulp-sass'),
 	uglify = require('gulp-uglify'),
-	rename = require("gulp-rename"),
-	// ghPages = require('gulp-gh-pages'),
-	// importJson = require('gulp-sass-import-json'),
-	gutil = require('gulp-util'),
-	browserSync = require('browser-sync').create();
+	webpack = require('webpack'),
+	webpackStream = require('webpack-stream'),
+	webpackConfig = require('./webpack.config.js');
 
 // FILE PATHS
 var basePaths = {
@@ -21,7 +26,6 @@ var basePaths = {
 	dest: 'dist'
 };
 var paths = {
-	lib: basePaths.dest + '/lib',
 	partials: basePaths.src + '/partials',
 	media: {
 		src: basePaths.src + '/media',
@@ -31,7 +35,7 @@ var paths = {
 		src: basePaths.src + '/project',
 		dest: basePaths.dest + '/project'
 	},
-	scripts: {
+	js: {
 		src: basePaths.src + '/js',
 		dest: basePaths.dest + '/js'
 	},
@@ -104,6 +108,9 @@ gulp.task('clean-css', function (cb) {
 });
 gulp.task('clean-html', function (cb) {
 	return del(`${basePaths.dest}/**/*.html`, cb);
+});
+gulp.task('clean-js', function (cb) {
+	return del(`${basePaths.dest}/js/*`, cb);
 });
 
 // Create project pages
@@ -251,10 +258,10 @@ gulp.task('sass', ['clean-css'], function() {
 
 // Minify JS
 gulp.task('minify-js', function() {
-	return gulp.src(`${paths.scripts.src}/*.js` )
+	return gulp.src(`${paths.js.dest}/*.js` )
 		.pipe(uglify())
 		.pipe(rename({ suffix: '.min' }))
-		.pipe(gulp.dest(paths.scripts.dest))
+		.pipe(gulp.dest(paths.js.dest))
 		.pipe(browserSync.stream());
 });
 
@@ -306,6 +313,21 @@ gulp.task('copy', function() {
 	// NOTE: JS files are copied as part of MinifyJS task
 });
 
+
+// Transpile and copy JS files.  But first, clean dist/js.
+gulp.task('js-everything', ['clean-js'], () => {
+	return gulp
+		.src(`${paths.js.src}/*.js`)
+		.pipe(webpackStream(webpackConfig), webpack)
+		// .pipe(sourcemaps.init())
+		// .pipe(babel({
+		// 	presets: ['es2015']
+		// }))
+		// .pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest(`${paths.js.dest}`))
+		.pipe(browserSync.stream());
+});
+
 //
 // MAIN TASK
 //
@@ -321,7 +343,7 @@ gulp.task('serve',
 		// 'project-headerfooter',
 		'sass',
 		'minify-css',
-		'minify-js',
+		'js-everything',
 		'copy',
 		'inject-main-tags',
 	], function() {
@@ -340,7 +362,7 @@ gulp.task('serve',
 		// Enable file watchers which will trigger a browser reload
 		gulp.watch(paths.styles.src + '/*.scss', ['sass']);
 		gulp.watch(paths.styles.dest + '/*.css', ['minify-css']);
-		gulp.watch(paths.scripts.src + '/*.js' , ['minify-js']);
+		gulp.watch(paths.js.src + '/*.js' , ['js-everything']);
 
 		// Copy over then reload) when these change
 		gulp.watch([
@@ -351,7 +373,7 @@ gulp.task('serve',
 		gulp.watch([
 			basePaths.dest + '/*.html',
 			basePaths.dest + '/*.json',
-			paths.scripts.dest + '/*.js',
+			paths.js.dest + '/*.js',
 		]).on('change', browserSync.reload);
 	}
 );
