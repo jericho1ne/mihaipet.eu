@@ -16,6 +16,20 @@ body {
 		}
 	}
 
+	.card {
+		a:not(.btn) {
+			color: lighten($theme-tertiary, 30);
+			font-weight: 500;
+			border-bottom: 0;
+
+			&:focus,
+			&:hover {
+				color: lighten($theme-tertiary, 10);
+			}
+		}
+
+	}
+
 	p:not(.lead) {
 		text-shadow: none;
 	}

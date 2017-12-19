@@ -2,7 +2,7 @@
 	{
 		"slug": "find-some-coffee",
 		"title": "Find Some Coffee",
-		"subtitle": "Find artisanal coffee nearby, see curated photos and reviews of Los Angeles coffee shops. Android, iOS, web app.",
+		"subtitle": "Find artisanal coffee nearby, see curated photos and reviews of Los Angeles coffee shops. Mobile app: <a href=\"https://play.google.com/store/apps/details?id=com.apps.fndsmcoffee\">Android</a> | <a href=\"https://itunes.apple.com/us/app/find-some-coffee/id1316428363?mt=8\">iOS</a>.",
 		"tech": "React, node.js",
 		"detail": "",
 		"button": "Website",
