@@ -314,7 +314,7 @@ gulp.task('copy', function() {
 });
 
 
-// Transpile and copy JS files.  But first, clean dist/js.
+// Transpile and copy JS files. But first, clean dist/js.
 gulp.task('js-everything', ['clean-js'], () => {
 	return gulp
 		.src(`${paths.js.src}/*.js`)

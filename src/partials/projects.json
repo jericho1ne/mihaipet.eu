@@ -1,5 +1,19 @@
 [
 	{
+		"slug": "find-some-coffee",
+		"title": "Find Some Coffee",
+		"subtitle": "Find artisanal coffee nearby, see curated photos and reviews of Los Angeles coffee shops. Android, iOS, web app.",
+		"tech": "React, node.js",
+		"detail": "",
+		"button": "Website",
+		"link": "http://findsomecoffee.com/",
+		"media": {
+			"thumb": "project/find-some-coffee.jpg",
+			"images": [],
+			"video": []
+		}
+	},
+	{
 		"slug": "fifa-gate",
 		"title": "FIFA Gate Data Viz",
 		"subtitle": "Visualization showcasing global corruption schemes via money flows between FIFA officials and co-conspirators.",
@@ -83,20 +97,6 @@
 		"media": {
 			"thumb": "project/waterbowl.jpg",
 			"images": ["waterbowl-01.jpg", "waterbowl-02.jpg"],
-			"video": []
-		}
-	},
-    {
-		"slug": "find-some-coffee",
-		"title": "Find Some Coffee",
-		"subtitle": "Geolocative web app for finding nearby coffee shops with strong coffee and equally strong wifi.",
-		"tech": "React, node.js",
-		"detail": "",
-		"button": "Website",
-		"link": "http://findsomecoffee.com/",
-		"media": {
-			"thumb": "project/find-some-coffee.jpg",
-			"images": [],
 			"video": []
 		}
 	},
