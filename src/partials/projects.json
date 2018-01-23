@@ -13,6 +13,37 @@
 			"video": []
 		}
 	},
+
+	{
+		"slug": "wild-pony-swimwear",
+		"title": "Wild Pony Swimwear",
+		"subtitle": "E-commerce storefront with custom theme + search engine optimization for Australian boutique swimwear brand.",
+		"tech": "Wordpress",
+		"detail": "",
+		"button": "Website",
+		"link": "https://www.wildpony.com.au/",
+		"media": {
+			"thumb": "project/wild-pony-swimwear.jpg",
+			"images": [],
+			"video": []
+		}
+	},
+
+	{
+		"slug": "law-offices",
+		"title": "Law Offices of Gail Dulay",
+		"subtitle": "Responsive framework website with a heavy SEO focus, relying heavily on custom-built HTML templates.",
+		"tech": "Bootstrap, HTML, CSS, Gulp",
+		"detail": "",
+		"button": "Website",
+		"link": "http://attorneydulay.com/",
+		"media": {
+			"thumb": "project/law-offices.jpg",
+			"images": [],
+			"video": []
+		}
+	},
+
 	{
 		"slug": "fifa-gate",
 		"title": "FIFA Gate Data Viz",
@@ -29,6 +60,7 @@
 			"video": []
 		}
 	},
+
 	{
 		"slug": "mapping-live-music",
 		"title": "Tracking Live Music Venues",
@@ -44,6 +76,7 @@
 			"video": []
 		}
 	},
+
 	{
 		"slug": "middle-of-june",
 		"title": "Middle of June",
@@ -58,20 +91,7 @@
 			"video": []
 		}
 	},
-	{
-		"slug": "law-offices",
-		"title": "Law Offices of Gail Dulay",
-		"subtitle": "Responsive framework website with a heavy SEO focus, relying heavily on custom-built HTML templates.",
-		"tech": "Bootstrap, HTML, CSS, Gulp",
-		"detail": "",
-		"button": "Website",
-		"link": "http://attorneydulay.com/",
-		"media": {
-			"thumb": "project/law-offices.jpg",
-			"images": [],
-			"video": []
-		}
-	},
+
     {
 		"slug": "renova-bikes",
 		"title": "Renova Bikes",
