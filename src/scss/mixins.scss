@@ -1,23 +1,23 @@
 // Mixins
 %transition-all {
-    -webkit-transition: all 0.35s;
-    -moz-transition: all 0.35s;
-    transition: all 0.35s;
+	-webkit-transition: all 0.35s;
+	-moz-transition: all 0.35s;
+	transition: all 0.35s;
 }
 %background-cover {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
 }
 @mixin banner-image($img) {
-    background-image: url($img);
-    position: relative;
-    z-index: 1;
-    // Background cover image
-    @extend %background-cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
+	background-image: url($img);
+	position: relative;
+	z-index: 1;
+	// Background cover image
+	@extend %background-cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
 }
 
 // Automagically resize _everything_
@@ -32,47 +32,56 @@
 	}
 
 	hr {
-        margin: $m*30px auto;
-    }
-    hr.spacer {
-        margin: $m*10px auto;
-    }
-
-    body {
-        font-size: $m*$font-size-base;
-        p {
-            line-height: $m * 1.85;
-            margin-top: $m*10px;
-        	font-size: $m * $font-size-base;
-        }
-        h5 {
-            line-height: $m*160%;
-        }
-    }
-    h1,
-    .hero-text {
-    	margin: $m*16px 0;
-        font-size: $h1FontSize * $m;
-    }
-    h2 { font-size: $h2FontSize * $m; margin: $m*14px 0; }
-    h3 { font-size: $h3FontSize * $m; margin: $m*12px 0; }
-    h4 { font-size: $h4FontSize * $m; margin: $m*8px 0; }
-    h5 { font-size: $h5FontSize * $m; margin: $m*6px 0; }
-    h6 { font-size: $h6FontSize * $m; margin: $m*4px 0; }
-
-	.cover {
-		padding: $m*2% $m*10%;
-		margin-top: $m*10%;
+		margin: $m*30px auto;
+	}
+	hr.spacer {
+		margin: $m*10px auto;
 	}
 
-    // No space above sutitle to keep compact
-    .subtitle {
-        margin-top: -$m*8px;
-    }
+	body {
+		font-size: $m*$font-size-base;
+		p {
+			line-height: $m * 1.85;
+			margin-top: $m*10px;
+			font-size: $m * $font-size-base;
+		}
+		h5 {
+			line-height: $m*160%;
+		}
+	}
+	h1,
+	.hero-text {
+		margin: $m*20px 0 $m*40px 0;
+		font-size: $h1FontSize * $m;
+	}
+	h2 { font-size: $h2FontSize * $m; margin: $m*14px 0; }
+	h3 { font-size: $h3FontSize * $m; margin: $m*12px 0; }
+	h4 { font-size: $h4FontSize * $m; margin: $m*8px 0; }
+	h5 { font-size: $h5FontSize * $m; margin: $m*6px 0; }
+	h6 { font-size: $h6FontSize * $m; margin: $m*4px 0; }
+
+	.jumbotron {
+		padding: ($m*$m)*2.2rem ($m*$m)*4rem;
+	}
+
+	.jumbotron.bottom {
+		margin-bottom: 0;
+	}
+
+	.cover {
+		padding: $m*.2rem $m*8%;
+		margin: $m*2rem 0;
+		border-radius: 3px;
+	}
+
+	// No space above sutitle to keep compact
+	.subtitle {
+		margin-top: -$m*8px;
+	}
 	.card {
 		// border: 1px solid red;
 		margin: $m*1rem auto;
-		margin-bottom: $m*1rem;
+		margin-bottom: $m*1.12rem;
 	}
 	.pad-top {
 		padding-top: $m*1.25em;
@@ -81,71 +90,71 @@
 		font-size: $m*1rem;
 	}
 	.btn-secondary {
-		$how-wide: $m * 48px;
+		$how-wide: $m * 3.5rem;
 		width: $how-wide;
 		height: $how-wide;
-		padding: $m * 7px;
-		margin: $how-wide / 8;
-		border-radius: $how-wide / 2;
+		padding: $m*.7rem $m*.3rem $m*.3rem $m*.3rem;
+		margin: 0 $how-wide*.25;
+		border-radius: $how-wide*10;
 		.svg-icon {
 			width: $m*32px;
 			height: $m*32px;
 		}
 	}
 
-    // Add space between columns
-    *[class^='col-sm'] {
-        padding: 0 $m*30px;
-    }
+	// Add space between columns
+	*[class^='col-sm'] {
+		padding: 0 $m*30px;
+	}
 }
 
 %link-color {
-    color: lighten($theme-secondary, 2) !important;
+	color: lighten($theme-secondary, 2) !important;
 }
 %link-color-hover {
-    color: darken($theme-secondary, 22) !important;
+	color: darken($theme-secondary, 22) !important;
 }
 %action-link {
-    @extend %link-color;
-    text-decoration: none;
-    &:hover,
-    &:focus {
-        @extend %link-color-hover;
-        text-decoration: none;
-    }
+	@extend %link-color;
+	text-decoration: none;
+	&:hover,
+	&:focus {
+		@extend %link-color-hover;
+		text-decoration: none;
+	}
 }
 %action-button {
-    background-color: lighten($theme-secondary, 2%);
-    border: 1px solid darken($theme-secondary, 18%) !important;
-    color: darken($theme-primary, 10) !important;
-    &:hover,
-    &:focus {
-        background-color: darken($theme-secondary, 22);
-    }
+	background-color: lighten($theme-secondary, 2%);
+	border: 1px solid darken($theme-secondary, 18%) !important;
+	color: darken($theme-primary, 10) !important;
+	&:hover,
+	&:focus {
+		background-color: darken($theme-secondary, 22);
+	}
 }
 %social-media-link {
-    @extend %link-color;
-    color: $theme-secondary;
-    text-decoration: none;
-    &:hover,
-    &:focus {
-        @extend %link-color-hover;
-        text-decoration: none;
-    }
+	@extend %link-color;
+	color: $theme-secondary;
+	text-decoration: none;
+	&:hover,
+	&:focus {
+		@extend %link-color-hover;
+		text-decoration: none;
+	}
 }
 // Common styles for navbar and footer
 %footer-header-common {
-    @extend %heading-font-normal;
-    //background-color: darken($theme-primary, 24);
-    background-color: $gray-dark;
-    border-color: transparent;
+	@extend %heading-font-normal;
+	//background-color: darken($theme-primary, 24);
+	background-color: $gray-dark;
+	border-color: transparent;
 }
 %border-radius {
-    border-radius: 4px;
+	border-radius: 4px;
 }
 %border-dark {
-    border: 2px solid darken($theme-primary, 4);
+	border: 2px solid darken($theme-primary, 4);
 }
 %border-light {
-    border: 1px solid rgba(#ccc, 0.75) !important;
+	border: 1px solid rgba(#ccc, 0.75) !important;
 }

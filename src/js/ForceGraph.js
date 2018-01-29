@@ -21,8 +21,8 @@ class ForceGraph {
 		// Constants for the SVG
 		var width = $('#forcegraph').width(),
 			height = 320,
-			circleRadius = 10,
-			iconSize = 38;
+			circleRadius = 9,
+			iconSize = 36;
 
 		// Color scales (10, 20, 20b, 20c)
 		// https://github.com/d3/d3-3.x-api-reference/blob/master/Ordinal-Scales.md#categorical-colors
@@ -32,7 +32,7 @@ class ForceGraph {
 		var force = d3.layout.force()
 			.gravity(.21)
 			.charge(-1200)
-			.distance(45)
+			.distance(46)
 			.size([width, height]);
 
 		// Append SVG to the DOM

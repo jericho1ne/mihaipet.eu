@@ -8,6 +8,10 @@ $fontSizeIncr: 1.2px;
 @media screen and (min-width: 1em) {
 	@include build-responsive-page(0.75);
 }
+/* Still small. iPhone SE (640px) */
+@media screen and (min-width: 20em) {
+	@include build-responsive-page(0.79);
+}
 @media screen and (min-width: 34em) {
 	@include build-responsive-page(0.86);
 }

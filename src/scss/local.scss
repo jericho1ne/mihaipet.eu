@@ -3,9 +3,9 @@ html,
 body {
 	height: 99%;
 	@extend %body-font-light;
-	background-color: darken($theme-secondary, 8);
+	background-color: #111;
 
-	a {
+	a:not(.btn) {
 		color: #fff;
 		text-decoration: none !important;
 		font-weight: 300;
@@ -35,11 +35,17 @@ body {
 	}
 }
 
-#forcegraph {
+svg#forcegraph {
 	width: 100%;
 	height: 320px;
+	z-index: 999;
+	overflow: visible;
 	transition: opacity 2.5s linear;
 }
+svg#forcegraph > svg {
+	overflow: visible;
+}
+
 .invisible {
 	opacity: 0;
 	transition: opacity 2.5s linear;
@@ -55,7 +61,8 @@ img.img-fluid {
 // Cover and Jumbotron
 .cover {
 	@extend .light-text;
-	background-color: rgba(4,97,123,.86);
+	opacity: 0.95;
+	background-color: rgba(0,80,110,1);
 	box-shadow: inset 0 0 5rem rgba(10,50,100,1);
 }
 .jumbotron {
@@ -81,13 +88,15 @@ img.img-fluid {
 	background-size: cover;
 	background-color: $gray-darker;
 }
-
 p, .cover-heading {
 	text-shadow: 0.05rem 0.05rem 0.15rem rgba(0, 0, 0, 0.75)
 }
 
 #menu-bar {
 	width: 100%;
+	z-index: 10;
+	top: 0;
+	position: fixed;
 	background-color: rgba(10,22,35,1);
 }
 footer.footer {
@@ -95,23 +104,34 @@ footer.footer {
 	position: absolute;
 	bottom: 0px;
 }
-.site-wrapper {
+section {
+	margin-top: 36px;
+	background-color: darken($theme-secondary, 8);
 	display: inline-block;
 	width: 100%;
-	height: 97%;
+	height: auto;
+	min-height: 100%;
+}
+.main-page {
+	height: 102%;
+}
+.overlay {
+	background-color: #222;
+	opacity: .5;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 18% 0;
+}
+.main-wrapper {
+	padding: 18% 0;
+	width: 100%;
+	height: 100%;
 	-webkit-box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
 	box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
 }
-.site-wrapper-inner {
-	// display: table-cell;
-	// vertical-align: top;
-}
-.cover-container {
-	width: 100%;
-	margin-right: auto;
-	margin-left: auto;
-}
-
 .masthead-brand {
 	margin-bottom: 0;
 }
@@ -130,7 +150,7 @@ iframe {
 
 .nav-masthead {
 	.nav-link {
-		font-weight: bold;
+		font-weight: 400;
 		color: rgba(255,255,255,.5);
 		background-color: transparent;
 		border-bottom: .1rem solid transparent;
@@ -167,12 +187,45 @@ iframe {
 }
 
 .lead {
-	font-size: 1.05rem;
+	font-size: 1.15rem;
 }
+
+.btn.btn-primary.emoji {
+	font-size: 2.2rem !important;
+	padding: 16px 20px 10px 20px;
+	border-radius: 120px;
+}
+
 
 // Customize html elements
 .btn-primary {
-	background-color: lighten($theme-primary, 8);
+	background-color: darken($theme-primary, 10);
+	color: #fff;
+	padding: 12px 42px;
+	border-radius: 300px;
+	font: 18px $font-family-body;
+	font-weight: 400;
+	letter-spacing: 1px;
+	border: 1px solid darken($theme-primary, 10);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	&:focus {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+	&:hover {
+		color: #fff;
+		background-color: darken($theme-primary, 5);
+		box-shadow: inset 0 .0 .05rem rgba(200,200,200,.5);
+		border: 1px solid rgba(255,255,255,.6);
+	}
+}
+.btn-primary-sm {
+	@extend .btn-primary;
+	padding: 8px 22px;
+	border-radius: 300px;
+	font: 14px $font-family-body;
+	font-weight: 200;
 }
 .btn-secondary {
 	border: none;
@@ -188,7 +241,6 @@ iframe {
 		// Dimensions in mixins.scss
 	}
 }
-
 // Forcegraph
 .link {
   stroke: #222;
