@@ -172,7 +172,7 @@ iframe {
 
 // Smaller site elements
 .card {
-	width: 21rem;
+	width: 23rem;
 	height: auto;
 	border-color: lighten($theme-primary, 12);
 	border-radius: .25rem;
@@ -183,6 +183,11 @@ iframe {
 	.card-img-top {
 		border-bottom: 0.001rem solid $gray-dark;
 		width: 100%;
+	}
+
+	.card-tech {
+		font-size: 0.8rem;
+		color: $gray-dark;
 	}
 }
 

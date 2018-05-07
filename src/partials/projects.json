@@ -1,10 +1,26 @@
 [
 	{
+		"slug": "starter-kit-media",
+		"title": "Starter Kit Media",
+		"type": "website",
+		"subtitle": "Fast loading, responsive promotional website for media production company.",
+		"tech": "HTML, SaSS, Jekyll + Liquid",
+		"detail": "",
+		"button": "Website",
+		"link": "https://starterkitmedia.com/",
+		"media": {
+			"thumb": "project/starter-kit-media.jpg",
+			"images": [],
+			"video": []
+		}
+	},
+
+	{
 		"slug": "find-some-coffee",
 		"title": "Find Some Coffee",
 		"type": "mobile",
 		"subtitle": "Find artisanal coffee nearby, see curated photos and reviews of Los Angeles coffee shops. Mobile app: <a href=\"https://play.google.com/store/apps/details?id=com.apps.fndsmcoffee\">Android</a> | <a href=\"https://itunes.apple.com/us/app/find-some-coffee/id1316428363?mt=8\">iOS</a>.",
-		"tech": "React, node.js",
+		"tech": "Vue.js, node.js",
 		"detail": "",
 		"button": "Website",
 		"link": "http://findsomecoffee.com/",
@@ -20,7 +36,7 @@
 		"title": "Wild Pony Swimwear",
 		"type": "website",
 		"subtitle": "E-commerce storefront with custom theme + search engine optimization for Australian boutique swimwear brand.",
-		"tech": "Wordpress",
+		"tech": "Wordpress, custom CSS",
 		"detail": "",
 		"button": "Website",
 		"link": "https://www.wildpony.com.au/",
@@ -52,7 +68,7 @@
 		"title": "FIFA Gate Data Viz",
 		"type": "dataviz",
 		"subtitle": "Visualization showcasing global corruption schemes via money flows between FIFA officials and co-conspirators.",
-		"tech": "Springy.js, jquery, photoshop",
+		"tech": "Springy.js, jQuery, Photoshop",
 		"detail": " Icons represent each \"Actor\" involved, Colors denote Connection types, and Line types define Actual vs Planned payoffs. Featured on <a href=\"http://thefieldsofgreen.com/2015/06/19/fifa-infographic/\">USA Today's Fields of Green</a>. Collaborative project with <a href=\"https://uscpublicdiplomacy.org/users/rook_campbell\">Rook Campbell, PhD</a>.",
 		"type": "data visualization",
 		"button": "Live Demo",
