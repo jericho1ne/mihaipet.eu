@@ -51,7 +51,7 @@
 	}
 	h1,
 	.hero-text {
-		margin: $m*20px 0 $m*40px 0;
+		margin: $m*1.5rem;
 		font-size: $h1FontSize * $m;
 	}
 	h2 { font-size: $h2FontSize * $m; margin: $m*14px 0; }
@@ -61,7 +61,7 @@
 	h6 { font-size: $h6FontSize * $m; margin: $m*4px 0; }
 
 	.jumbotron {
-		padding: ($m*$m)*2.2rem ($m*$m)*4rem;
+		padding: ($m*$m)*2.2rem 0;
 	}
 
 	.jumbotron.bottom {
@@ -69,8 +69,8 @@
 	}
 
 	.cover {
-		padding: $m*.2rem $m*8%;
-		margin: $m*2rem 0;
+		padding: $m*.6rem auto;
+		// margin: $m*2rem 0;
 		border-radius: 3px;
 	}
 
@@ -90,15 +90,15 @@
 		font-size: $m*1rem;
 	}
 	.btn-secondary {
-		$how-wide: $m * 3.5rem;
+		$how-wide: $m * 2.8rem;
 		width: $how-wide;
 		height: $how-wide;
-		padding: $m*.7rem $m*.3rem $m*.3rem $m*.3rem;
-		margin: 0 $how-wide*.25;
+		padding: $m*.6rem 0;
+		margin: $how-wide*.1;
 		border-radius: $how-wide*10;
 		.svg-icon {
-			width: $m*32px;
-			height: $m*32px;
+			width: $m*0.6*$how-wide;
+			height: $m*0.6*$how-wide;
 		}
 	}
 
